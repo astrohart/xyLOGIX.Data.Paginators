@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Paginators.Int
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Paginators.Tests", "xyLOGIX.Data.Paginators.Tests\xyLOGIX.Data.Paginators.Tests.csproj", "{6A5BF1D0-66A7-4350-A26D-15A0CF0DDB5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Paginators.Tests.Common", "xyLOGIX.Data.Paginators.Tests.Common\xyLOGIX.Data.Paginators.Tests.Common.csproj", "{AB364A46-0D89-452A-9A79-20208D0BC1C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{6A5BF1D0-66A7-4350-A26D-15A0CF0DDB5A}.Release|x64.Build.0 = Release|x64
 		{6A5BF1D0-66A7-4350-A26D-15A0CF0DDB5A}.Release|x86.ActiveCfg = Release|x86
 		{6A5BF1D0-66A7-4350-A26D-15A0CF0DDB5A}.Release|x86.Build.0 = Release|x86
+		{AB364A46-0D89-452A-9A79-20208D0BC1C2}.Debug|x64.ActiveCfg = Debug|x64
+		{AB364A46-0D89-452A-9A79-20208D0BC1C2}.Debug|x64.Build.0 = Debug|x64
+		{AB364A46-0D89-452A-9A79-20208D0BC1C2}.Debug|x86.ActiveCfg = Debug|x86
+		{AB364A46-0D89-452A-9A79-20208D0BC1C2}.Debug|x86.Build.0 = Debug|x86
+		{AB364A46-0D89-452A-9A79-20208D0BC1C2}.Release|x64.ActiveCfg = Release|x64
+		{AB364A46-0D89-452A-9A79-20208D0BC1C2}.Release|x64.Build.0 = Release|x64
+		{AB364A46-0D89-452A-9A79-20208D0BC1C2}.Release|x86.ActiveCfg = Release|x86
+		{AB364A46-0D89-452A-9A79-20208D0BC1C2}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

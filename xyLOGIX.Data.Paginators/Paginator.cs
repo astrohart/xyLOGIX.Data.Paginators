@@ -43,15 +43,15 @@ namespace xyLOGIX.Data.Paginators
       /// </summary>
       /// <remarks>
       /// The value of this property can be changed using the <see
-      /// cref="M:CoinMarketCap.Data.Scraper.Helpers.Interfaces.IPaginator.First"/>
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.First"/>
       /// , <see
-      /// cref="M:CoinMarketCap.Data.Scraper.Helpers.Interfaces.IPaginator.Prev"/>
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Prev"/>
       /// , <see
-      /// cref="M:CoinMarketCap.Data.Scraper.Helpers.Interfaces.IPaginator.GoToPage"/>
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.GoToPage"/>
       /// , <see
-      /// cref="M:CoinMarketCap.Data.Scraper.Helpers.Interfaces.IPaginator.Next"/>
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Next"/>
       /// , or <see
-      /// cref="M:CoinMarketCap.Data.Scraper.Helpers.Interfaces.IPaginator.Last"/>
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Last"/>
       /// methods in a robust, fault-tolerant, and thread-safe manner.
       /// </remarks>
       public int CurrentPage { get; private set; }
@@ -97,7 +97,7 @@ namespace xyLOGIX.Data.Paginators
       /// </returns>
       /// <remarks>
       /// Implementers of this method should call the <see
-      /// cref="M:CoinMarketCap.Data.Scraper.Helpers.IPaginator.GoToPage"/>
+      /// cref="M:xyLOGIX.Data.Paginators.IPaginator.GoToPage"/>
       /// method internally.
       /// </remarks>
       public string First()
@@ -202,7 +202,7 @@ namespace xyLOGIX.Data.Paginators
       /// </returns>
       /// <remarks>
       /// Implementers of this method should call the <see
-      /// cref="M:CoinMarketCap.Data.Scraper.Helpers.IPaginator.GoToPage"/>
+      /// cref="M:xyLOGIX.Data.Paginators.IPaginator.GoToPage"/>
       /// method internally.
       /// </remarks>
       public string Last()
@@ -216,7 +216,7 @@ namespace xyLOGIX.Data.Paginators
       /// </returns>
       /// <remarks>
       /// Implementers of this method should call the <see
-      /// cref="M:CoinMarketCap.Data.Scraper.Helpers.IPaginator.GoToPage"/>
+      /// cref="M:xyLOGIX.Data.Paginators.IPaginator.GoToPage"/>
       /// method internally.
       /// </remarks>
       public string Next()
@@ -230,7 +230,7 @@ namespace xyLOGIX.Data.Paginators
       /// </returns>
       /// <remarks>
       /// Implementers of this method should call the <see
-      /// cref="M:CoinMarketCap.Data.Scraper.Helpers.IPaginator.GoToPage"/>
+      /// cref="M:xyLOGIX.Data.Paginators.IPaginator.GoToPage"/>
       /// method internally.
       /// </remarks>
       public string Prev()
@@ -246,11 +246,11 @@ namespace xyLOGIX.Data.Paginators
 
       /// <summary>
       /// Raises the <see
-      /// cref="E:CoinMarketCap.Data.Scraper.Helpers.IPaginator.PageChanged"/> event.
+      /// cref="E:xyLOGIX.Data.Paginators.IPaginator.PageChanged"/> event.
       /// </summary>
       /// <param name="e">
       /// A <see
-      /// cref="T:CoinMarketCap.Data.Scraper.Helpers.Events.PageChangedEventArgs"/>
+      /// cref="T:xyLOGIX.Data.Paginators.Events.PageChangedEventArgs"/>
       /// that contains the event data.
       /// </param>
       private void OnPageChanged(PageChangedEventArgs e)

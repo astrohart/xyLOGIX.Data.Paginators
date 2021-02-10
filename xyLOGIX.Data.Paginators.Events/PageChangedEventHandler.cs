@@ -8,7 +8,7 @@ namespace xyLOGIX.Data.Paginators.Events
    /// </param>
    /// <param name="e">
    /// A <see
-   /// cref="T:CoinMarketCap.Data.Scraper.Helpers.Interfaces.PageChangedEventArgs"/>
+   /// cref="T:xyLOGIX.Data.Paginators.Interfaces.PageChangedEventArgs"/>
    /// that contains the event data.
    /// </param>
    public delegate void PageChangedEventHandler(object sender, PageChangedEventArgs e);

@@ -84,5 +84,11 @@
   <ItemGroup>
     <Content Include="1382_cogs.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\xyLOGIX.Data.Paginators.Events\xyLOGIX.Data.Paginators.Events.csproj">
+      <Project>{1571453c-bb35-4b06-a66c-eaf328dfb325}</Project>
+      <Name>xyLOGIX.Data.Paginators.Events</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

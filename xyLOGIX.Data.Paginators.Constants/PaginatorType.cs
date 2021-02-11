@@ -1,4 +1,4 @@
-﻿namespace xyLOGIX.Data.Paginators.Factories
+﻿namespace xyLOGIX.Data.Paginators.Constants
 {
    /// <summary>
    /// Values describing the type of Paginator you want.

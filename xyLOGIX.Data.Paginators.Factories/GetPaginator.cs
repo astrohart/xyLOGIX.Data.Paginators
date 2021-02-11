@@ -1,4 +1,5 @@
 ﻿using System;
+using xyLOGIX.Data.Paginators.Constants;
 using xyLOGIX.Data.Paginators.Interfaces;
 
 namespace xyLOGIX.Data.Paginators.Factories

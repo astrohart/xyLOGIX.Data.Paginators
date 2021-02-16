@@ -1,9 +1,10 @@
 using System;
 using xyLOGIX.Data.Paginators.Events;
+using xyLOGIX.Data.Paginators.Interfaces;
 
 namespace xyLOGIX.Data.Paginators
 {
-   public abstract class PaginatorBase
+   public abstract class PaginatorBase : IPaginator
    {
       /// <summary>
       /// Reference to an instance of an object that serves as a
@@ -34,7 +35,7 @@ namespace xyLOGIX.Data.Paginators
       /// or <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Last" />
       /// methods in a robust, fault-tolerant, and thread-safe manner.
       /// </remarks>
-      public abstract int CurrentPage { get; }
+      public abstract int CurrentPage { get; protected set; }
 
       /// <summary>
       /// Gets a value indicating whether the paginator is initialized.
@@ -44,7 +45,7 @@ namespace xyLOGIX.Data.Paginators
       /// <summary>
       /// Gets an integer describing the total number of entries on a page.
       /// </summary>
-      public abstract int PageSize { get; }
+      public abstract int PageSize { get; protected set; }
 
       /// <summary>
       /// Gets a string containing the URL of the current page.
@@ -54,7 +55,7 @@ namespace xyLOGIX.Data.Paginators
       /// <summary>
       /// Gets an integer describing the total number of entries in the entire listing.
       /// </summary>
-      public abstract int TotalEntries { get; }
+      public abstract int TotalEntries { get; protected set; }
 
       /// <summary>
       /// Gets an integer describing the total number of pages.

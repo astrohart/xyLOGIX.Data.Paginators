@@ -41,7 +41,7 @@ namespace xyLOGIX.Data.Paginators
       /// or <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Last" />
       /// methods in a robust, fault-tolerant, and thread-safe manner.
       /// </remarks>
-      public override int CurrentPage { get; private set; }
+      public override int CurrentPage { get; protected set; }
 
       /// <summary>
       /// Gets a value indicating whether the paginator is initialized.
@@ -53,7 +53,7 @@ namespace xyLOGIX.Data.Paginators
       /// <summary>
       /// Gets an integer describing the total number of entries on a page.
       /// </summary>
-      public override int PageSize { get; private set; }
+      public override int PageSize { get; protected set; }
 
       /// <summary>
       /// Gets a string containing the URL of the current page.
@@ -66,7 +66,7 @@ namespace xyLOGIX.Data.Paginators
       /// <summary>
       /// Gets an integer describing the total number of entries in the entire listing.
       /// </summary>
-      public override int TotalEntries { get; private set; }
+      public override int TotalEntries { get; protected set; }
 
       /// <summary>
       /// Gets an integer describing the total number of pages.

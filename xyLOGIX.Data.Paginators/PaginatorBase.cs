@@ -3,25 +3,18 @@ using xyLOGIX.Data.Paginators.Events;
 
 namespace xyLOGIX.Data.Paginators
 {
-   /// <summary>
-   /// Object that provides services for accessing paginated data from a data source.
-   /// </summary>
-   public sealed class Paginator : PaginatorBase
+   public abstract class PaginatorBase
    {
       /// <summary>
-      /// Constructs a new instance of
-      /// <see
-      ///    cref="T:CoinMarketCap.Data.Scraper.CoinMarketCapPagination" />
-      /// and
-      /// returns a reference to it.
+      /// Reference to an instance of an object that serves as a
+      /// thread-synchronization root object.
       /// </summary>
-      public Paginator()
-      {
-         CurrentPage = 1;
-         PageSize = 0;
-         TotalEntries = 0;
-         _urlExpression = null;
-      }
+      protected readonly object SyncRoot = new object();
+
+      /// <summary>
+      /// Expression that tells us how to format the URL for each page.
+      /// </summary>
+      protected Func<int, string> _urlExpression;
 
       /// <summary>
       /// Gets or sets an integer describing the current page.
@@ -41,45 +34,37 @@ namespace xyLOGIX.Data.Paginators
       /// or <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Last" />
       /// methods in a robust, fault-tolerant, and thread-safe manner.
       /// </remarks>
-      public override int CurrentPage { get; private set; }
+      public abstract int CurrentPage { get; }
 
       /// <summary>
       /// Gets a value indicating whether the paginator is initialized.
       /// </summary>
-      public override bool IsInitialized
-         => PageSize > 0 && TotalEntries > 0 && TotalPages > 0 &&
-            _urlExpression != null;
+      public abstract bool IsInitialized { get; }
 
       /// <summary>
       /// Gets an integer describing the total number of entries on a page.
       /// </summary>
-      public override int PageSize { get; private set; }
+      public abstract int PageSize { get; }
 
       /// <summary>
       /// Gets a string containing the URL of the current page.
       /// </summary>
-      public override string PageUrl
-      {
-         get => OnFormatPageURL(CurrentPage);
-      }
+      public abstract string PageUrl { get; }
 
       /// <summary>
       /// Gets an integer describing the total number of entries in the entire listing.
       /// </summary>
-      public override int TotalEntries { get; private set; }
+      public abstract int TotalEntries { get; }
 
       /// <summary>
       /// Gets an integer describing the total number of pages.
       /// </summary>
-      public override int TotalPages
-         => TotalEntries > 0 && PageSize > 0
-            ? (TotalEntries + PageSize + 1) / PageSize
-            : 1;
+      public abstract int TotalPages { get; }
 
       /// <summary>
       /// Occurs when the current page has been set to a new value.
       /// </summary>
-      public override event PageChangedEventHandler PageChanged;
+      public abstract event PageChangedEventHandler PageChanged;
 
       /// <summary>
       /// Navigates to the first page in a thread-safe manner.
@@ -93,8 +78,7 @@ namespace xyLOGIX.Data.Paginators
       ///    cref="M:xyLOGIX.Data.Paginators.IPaginator.GoToPage" />
       /// method internally.
       /// </remarks>
-      public override string First()
-         => GoToPage(1);
+      public abstract string First();
 
       /// <summary>
       /// Attempts the paginator to the desired <paramref name="page" /> in a
@@ -109,41 +93,7 @@ namespace xyLOGIX.Data.Paginators
       /// occurred. This method will not go beyond the bounds of the current
       /// range of pages.
       /// </returns>
-      public override string GoToPage(int page)
-      {
-         lock (SyncRoot)
-         {
-            var result = string.Empty;
-
-            if (page <= 0 || TotalPages <= 1
-            ) // trying to move before the first or only page, stop at first page.
-            {
-               CurrentPage = 1;
-               OnPageChanged(new PageChangedEventArgs(1, TotalPages));
-               result = PageUrl;
-            }
-            else if (page > TotalPages
-            ) // trying to move past the end; stop at last page.
-            {
-               CurrentPage = TotalPages;
-               OnPageChanged(new PageChangedEventArgs(TotalPages, TotalPages));
-               result = PageUrl;
-            }
-            else if (CurrentPage == page) // we're already at the desired page.
-            {
-               OnPageChanged(new PageChangedEventArgs(page, TotalPages));
-               result = PageUrl;
-            }
-            else
-            {
-               CurrentPage = page; // set CurrentPage to desired value
-               OnPageChanged(new PageChangedEventArgs(CurrentPage, TotalPages));
-               result = PageUrl; // return resultant page URL
-            }
-
-            return result;
-         }
-      }
+      public abstract string GoToPage(int page);
 
       /// <summary>
       /// Called to initialize the values of the paginator parameters.
@@ -173,22 +123,8 @@ namespace xyLOGIX.Data.Paginators
       /// <exception cref="T:System.ArgumentNullException">
       /// Thrown if the <paramref name="urlExpression" /> parameter is not initialized.
       /// </exception>
-      public override void InitializePagination(int pageSize, int totalEntries,
-         Func<int, string> urlExpression)
-      {
-         if (pageSize <= 0)
-            throw new ArgumentOutOfRangeException(nameof(pageSize));
-         if (totalEntries <= 0)
-            throw new ArgumentOutOfRangeException(nameof(totalEntries));
-
-         CurrentPage = 1; // current page always starts at 1
-         PageSize = pageSize;
-         TotalEntries = totalEntries;
-         _urlExpression = urlExpression ??
-                          throw new ArgumentNullException(
-                             nameof(urlExpression)
-                          );
-      }
+      public abstract void InitializePagination(int pageSize, int totalEntries,
+         Func<int, string> urlExpression);
 
       /// <summary>
       /// Navigates to the last page in a thread-safe manner.
@@ -202,8 +138,7 @@ namespace xyLOGIX.Data.Paginators
       ///    cref="M:xyLOGIX.Data.Paginators.IPaginator.GoToPage" />
       /// method internally.
       /// </remarks>
-      public override string Last()
-         => GoToPage(TotalPages);
+      public abstract string Last();
 
       /// <summary>
       /// Navigates to the next page in a thread-safe manner.
@@ -217,8 +152,7 @@ namespace xyLOGIX.Data.Paginators
       ///    cref="M:xyLOGIX.Data.Paginators.IPaginator.GoToPage" />
       /// method internally.
       /// </remarks>
-      public override string Next()
-         => GoToPage(++CurrentPage);
+      public abstract string Next();
 
       /// <summary>
       /// Navigates to the previous page in a thread-safe manner.
@@ -232,8 +166,7 @@ namespace xyLOGIX.Data.Paginators
       ///    cref="M:xyLOGIX.Data.Paginators.IPaginator.GoToPage" />
       /// method internally.
       /// </remarks>
-      public override string Prev()
-         => GoToPage(--CurrentPage);
+      public abstract string Prev();
 
       /// <summary>
       /// Invokes the expression, if any, attached to the
@@ -247,8 +180,7 @@ namespace xyLOGIX.Data.Paginators
       /// current page.
       /// </param>
       /// <returns>String containing the </returns>
-      protected override string OnFormatPageURL(int pageNumber)
-         => _urlExpression?.Invoke(pageNumber) ?? null;
+      protected abstract string OnFormatPageURL(int pageNumber);
 
       /// <summary>
       /// Raises the
@@ -260,7 +192,6 @@ namespace xyLOGIX.Data.Paginators
       /// A <see cref="T:xyLOGIX.Data.Paginators.Events.PageChangedEventArgs" />
       /// that contains the event data.
       /// </param>
-      protected override void OnPageChanged(PageChangedEventArgs e)
-         => PageChanged?.Invoke(this, e);
+      protected abstract void OnPageChanged(PageChangedEventArgs e);
    }
 }

@@ -86,6 +86,10 @@
     <Content Include="1382_cogs.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\xyLOGIX.Core.Debug.VS2019\xyLOGIX.Core.Debug\xyLOGIX.Core.Debug.csproj">
+      <Project>{2E4EDA4F-0D3A-442F-87B5-F0224F596A80}</Project>
+      <Name>xyLOGIX.Core.Debug</Name>
+    </ProjectReference>
     <ProjectReference Include="..\xyLOGIX.Data.Paginators.Constants\xyLOGIX.Data.Paginators.Constants.csproj">
       <Project>{A753BB9E-F746-455F-B383-51F713325357}</Project>
       <Name>xyLOGIX.Data.Paginators.Constants</Name>

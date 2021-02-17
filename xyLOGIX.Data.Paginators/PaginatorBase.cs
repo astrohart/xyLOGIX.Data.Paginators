@@ -29,8 +29,7 @@ namespace xyLOGIX.Data.Paginators
         /// This default constructor initializes the
         /// <see
         ///     cref="F:xyLOGIX.Data.Paginators.PaginatorBase._urlExpression" />
-        /// field
-        /// to <c>null</c>.
+        /// field to <c>null</c>.
         /// </remarks>
         protected PaginatorBase()
         {
@@ -50,14 +49,14 @@ namespace xyLOGIX.Data.Paginators
         /// <see
         ///     cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.First" />
         /// ,
-        /// <see
-        ///     cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Prev" />
-        /// ,
+        /// <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Prev" /> ,
         /// <see
         ///     cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.GoToPage" />
         /// ,
         /// <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Next" /> ,
-        /// or <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Last" />
+        /// or
+        /// <see
+        ///     cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Last" />
         /// methods in a robust, fault-tolerant, and thread-safe manner.
         /// </remarks>
         public abstract int CurrentPage { get; protected set; }
@@ -81,9 +80,10 @@ namespace xyLOGIX.Data.Paginators
         /// Gets a reference to a
         /// <see
         ///     cref="T:xyLOGIX.Data.Paginators.Pagination" />
-        /// object.
+        /// object that defines
+        /// the pagination strategy for this paginator.
         /// </summary>
-        public abstract Pagination Pagination { get; }
+        public abstract Pagination Pagination { get; protected set; }
 
         /// <summary>
         /// Gets an integer describing the total number of entries in the entire listing.
@@ -94,6 +94,28 @@ namespace xyLOGIX.Data.Paginators
         /// Gets an integer describing the total number of pages.
         /// </summary>
         public abstract int TotalPages { get; }
+
+        /// <summary>
+        /// Specifies the pagination strategy to be utilized with this object in
+        /// a fluent manner.
+        /// </summary>
+        /// <param name="pagination">
+        /// Reference to an instance of
+        /// <see
+        ///     cref="T:xyLOGIX.Data.Paginators.Models.Pagination" />
+        /// that specifies
+        /// the pagination strategy to be utilized.
+        /// </param>
+        /// <returns>
+        /// Reference to the instance of the object that called this method for
+        /// fluent use.
+        /// </returns>
+        public IPaginator AndPagination(Pagination pagination)
+        {
+            Pagination = pagination;
+
+            return this;
+        }
 
         /// <summary>
         /// Navigates to the first page in a thread-safe manner.
@@ -135,11 +157,11 @@ namespace xyLOGIX.Data.Paginators
         /// across all pages.
         /// </param>
         /// <param name="urlExpression">
-        /// (Required.) A <see cref="T:System.Func" /> that takes the current page
-        /// number as the parameter and returns a string with the
-        /// properly-formatted URL for scraping the Nth page, where N is a number
-        /// equal to or greater than 1 and less than or equal to the total number
-        /// of pages.
+        /// (Required.) A <see cref="T:System.Func" /> that takes the current
+        /// page number as the parameter and returns a string with the
+        /// properly-formatted URL for scraping the Nth page, where N is a
+        /// number equal to or greater than 1 and less than or equal to the
+        /// total number of pages.
         /// </param>
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         /// Thrown if either of the <paramref name="pageSize" /> or
@@ -218,8 +240,11 @@ namespace xyLOGIX.Data.Paginators
         /// event.
         /// </summary>
         /// <param name="e">
-        /// A <see cref="T:xyLOGIX.Data.Paginators.Events.PageChangedEventArgs" />
-        /// that contains the event data.
+        /// A
+        /// <see
+        ///     cref="T:xyLOGIX.Data.Paginators.Events.PageChangedEventArgs" />
+        /// that
+        /// contains the event data.
         /// </param>
         protected abstract void OnPageChanged(PageChangedEventArgs e);
     }

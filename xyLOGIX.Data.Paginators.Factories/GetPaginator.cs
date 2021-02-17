@@ -53,7 +53,9 @@ namespace xyLOGIX.Data.Paginators.Factories
 
          switch (type)
          {
-            // TODO: Add cases here to construct objects based on the enumeration value passed.
+            case PaginatorType.UrlPaginator:
+               result = new UrlBasedPaginator();
+               break;
 
             case PaginatorType.Unknown:
             default:

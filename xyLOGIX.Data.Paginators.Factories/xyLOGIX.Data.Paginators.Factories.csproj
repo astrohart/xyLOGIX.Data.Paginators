@@ -94,6 +94,10 @@
       <Project>{D74EC18F-0A99-425E-94CF-9E38976CB7F7}</Project>
       <Name>xyLOGIX.Data.Paginators.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Data.Paginators\xyLOGIX.Data.Paginators.csproj">
+      <Project>{919790E2-EC4C-4B37-B375-B8FA02C89991}</Project>
+      <Name>xyLOGIX.Data.Paginators</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -47,7 +47,7 @@ namespace xyLOGIX.Data.Paginators.Factories
       /// which corresponds to the value passed in the <paramref name="type" />
       /// parameter.
       /// </exception>
-      public static IPaginator For(PaginatorType type)
+      public static IPaginator OfType(PaginatorType type)
       {
          IPaginator result;
 
@@ -57,7 +57,6 @@ namespace xyLOGIX.Data.Paginators.Factories
                result = new UrlBasedPaginator();
                break;
 
-            case PaginatorType.Unknown:
             default:
                throw new ArgumentOutOfRangeException(nameof(type), type, null);
          }

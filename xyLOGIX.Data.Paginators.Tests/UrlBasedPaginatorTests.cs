@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using System;
+using xyLOGIX.Data.Paginators.Constants;
 using xyLOGIX.Data.Paginators.Events;
+using xyLOGIX.Data.Paginators.Factories;
 using xyLOGIX.Data.Paginators.Interfaces;
 using xyLOGIX.Data.Paginators.Models;
 
@@ -42,18 +44,21 @@ namespace xyLOGIX.Data.Paginators.Tests
       [SetUp]
       public void Initialize()
       {
-         _paginator = new UrlBasedPaginator(new Pagination());
+         Assert.DoesNotThrow(()=>
+         _paginator = GetPaginator.OfType(PaginatorType.UrlPaginator)
+            .HavingPagination(
+               new Pagination(1, VALID_PAGE_SIZE, VALID_TOTAL_ENTRIES)
+            ).AndUrlFormat(
+               new Func<int, string>(page => $"https://coinmarketcap.com/{page}/")
+            ) as IUrlPaginator
+         );
+         Assert.IsNotNull(_paginator);
+
          _paginator.PageChanged += OnPaginatorPageChanged;
 
          Assert.AreEqual(
-            1, _paginator.TotalPages
+            41, _paginator.TotalPages
          ); // prior to initialization of paginator, TotalPages shall default to 1
-         Assert.DoesNotThrow(
-            () => ((IUrlPaginator)_paginator).InitializePagination(
-               VALID_PAGE_SIZE, VALID_TOTAL_ENTRIES,
-               page => $"https://coinmarketcap.com/{page}/"
-            )
-         );
       }
 
       /// <summary>

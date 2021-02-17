@@ -87,7 +87,7 @@ namespace xyLOGIX.Data.Paginators
         /// Reference to the instance of the object that called this method for
         /// fluent use.
         /// </returns>
-        public IPaginator AndPagination(Pagination pagination)
+        public dynamic HavingPagination(Pagination pagination)
         {
             Pagination = pagination;
 

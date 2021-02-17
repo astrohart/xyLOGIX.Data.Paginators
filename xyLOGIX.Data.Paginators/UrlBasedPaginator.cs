@@ -288,7 +288,7 @@ namespace xyLOGIX.Data.Paginators
         /// Thrown if the <paramref name="expression" /> parameter is passed a
         /// <c>null</c> value.
         /// </exception>
-        public dynamic WithUrlExpression(Func<int, string> expression)
+        public dynamic AndUrlFormat(Func<int, string> expression)
         {
             UrlExpression = expression ??
                             throw new ArgumentNullException(nameof(expression));

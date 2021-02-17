@@ -82,7 +82,7 @@ namespace xyLOGIX.Data.Paginators.Interfaces
         /// Reference to the instance of the object that called this method for
         /// fluent use.
         /// </returns>
-        IPaginator AndPagination(Pagination pagination);
+        dynamic HavingPagination(Pagination pagination);
 
         /// <summary>
         /// Navigates to the first page in a thread-safe manner.

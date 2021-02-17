@@ -67,6 +67,7 @@
     <RootNamespace>xyLOGIX.Data.Paginators.Tests</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="nunit.framework, Version=3.13.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.13.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -95,9 +96,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\xyLOGIX.Data.Paginators.Constants\xyLOGIX.Data.Paginators.Constants.csproj">
+      <Project>{A753BB9E-F746-455F-B383-51F713325357}</Project>
+      <Name>xyLOGIX.Data.Paginators.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\xyLOGIX.Data.Paginators.Events\xyLOGIX.Data.Paginators.Events.csproj">
       <Project>{1571453C-BB35-4B06-A66C-EAF328DFB325}</Project>
       <Name>xyLOGIX.Data.Paginators.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Data.Paginators.Factories\xyLOGIX.Data.Paginators.Factories.csproj">
+      <Project>{84C1F71A-AAA4-4A08-9728-19E710965E4D}</Project>
+      <Name>xyLOGIX.Data.Paginators.Factories</Name>
     </ProjectReference>
     <ProjectReference Include="..\xyLOGIX.Data.Paginators.Interfaces\xyLOGIX.Data.Paginators.Interfaces.csproj">
       <Project>{D74EC18F-0A99-425E-94CF-9E38976CB7F7}</Project>

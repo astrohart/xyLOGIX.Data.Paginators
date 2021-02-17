@@ -7,7 +7,7 @@ namespace xyLOGIX.Data.Paginators
     /// <summary>
     /// Object that provides services for accessing paginated data from a data source.
     /// </summary>
-    public sealed class Paginator : PaginatorBase
+    public sealed class UrlBasedPaginator : PaginatorBase
     {
         /// <summary>
         /// Constructs a new instance of
@@ -25,7 +25,7 @@ namespace xyLOGIX.Data.Paginators
         /// provides the pagination data, such as current page, page size, total
         /// entries, etc.
         /// </param>
-        public Paginator(Pagination pagination)
+        public UrlBasedPaginator(Pagination pagination)
         {
             Pagination = pagination;
             _urlExpression = null;

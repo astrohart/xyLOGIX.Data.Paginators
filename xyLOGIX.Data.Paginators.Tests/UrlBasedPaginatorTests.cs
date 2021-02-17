@@ -11,7 +11,7 @@ namespace xyLOGIX.Data.Paginators.Tests
    /// cref="T:xyLOGIX.Data.Paginators.Paginator"/> class.
    /// </summary>
    [TestFixture]
-   public class PaginatorTests
+   public class UrlBasedPaginatorTests
    {
       private const string VALID_COINMARKETCAP_PAGE_1_URL =
          "https://coinmarketcap.com/1/";
@@ -42,7 +42,7 @@ namespace xyLOGIX.Data.Paginators.Tests
       [SetUp]
       public void Initialize()
       {
-         _paginator = new Paginator(new Pagination());
+         _paginator = new UrlBasedPaginator(new Pagination());
          _paginator.PageChanged += OnPaginatorPageChanged;
 
          Assert.AreEqual(

@@ -1,4 +1,3 @@
-using System;
 using xyLOGIX.Data.Paginators.Events;
 using xyLOGIX.Data.Paginators.Models;
 
@@ -10,25 +9,25 @@ namespace xyLOGIX.Data.Paginators.Interfaces
     /// </summary>
     public interface IPaginator
     {
-       /// <summary>
-       /// Gets or sets an integer describing the current page.
-       /// </summary>
-       /// <remarks>
-       /// The value of this property can be changed using the
-       /// <see
-       ///     cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.First" />
-       /// ,
-       /// <see
-       ///     cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Prev" />
-       /// ,
-       /// <see
-       ///     cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.GoToPage" />
-       /// ,
-       /// <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Next" /> ,
-       /// or <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Last" />
-       /// methods in a robust, fault-tolerant, and thread-safe manner.
-       /// </remarks>
-       int CurrentPage { get; }
+        /// <summary>
+        /// Gets or sets an integer describing the current page.
+        /// </summary>
+        /// <remarks>
+        /// The value of this property can be changed using the
+        /// <see
+        ///     cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.First" />
+        /// ,
+        /// <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Prev" /> ,
+        /// <see
+        ///     cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.GoToPage" />
+        /// ,
+        /// <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Next" /> ,
+        /// or
+        /// <see
+        ///     cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Last" />
+        /// methods in a robust, fault-tolerant, and thread-safe manner.
+        /// </remarks>
+        int CurrentPage { get; }
 
         /// <summary>
         /// Gets a value indicating whether the paginator is initialized.
@@ -69,8 +68,8 @@ namespace xyLOGIX.Data.Paginators.Interfaces
         event PageChangedEventHandler PageChanged;
 
         /// <summary>
-        /// Specifies the pagination strategy to be utilized with this object in a
-        /// fluent manner.
+        /// Specifies the pagination strategy to be utilized with this object in
+        /// a fluent manner.
         /// </summary>
         /// <param name="pagination">
         /// Reference to an instance of
@@ -113,37 +112,6 @@ namespace xyLOGIX.Data.Paginators.Interfaces
         /// range of pages.
         /// </returns>
         string GoToPage(int page);
-
-        /// <summary>
-        /// Called to initialize the values of the paginator parameters.
-        /// </summary>
-        /// <param name="pageSize">
-        /// (Required.) Positive integer specifying the number of entries on a page.
-        /// </param>
-        /// <param name="totalEntries">
-        /// (Required.) Positive integer specifying the total number of entries
-        /// across all pages.
-        /// </param>
-        /// <param name="urlExpression">
-        /// (Required.) A <see cref="T:System.Func" /> that takes the current page
-        /// number as the parameter and returns a string with the
-        /// properly-formatted URL for scraping the Nth page, where N is a number
-        /// equal to or greater than 1 and less than or equal to the total number
-        /// of pages.
-        /// </param>
-        /// <exception cref="T:System.ArgumentOutOfRangeException">
-        /// Thrown if either of the <paramref name="pageSize" /> or
-        /// <paramref
-        ///     name="totalEntries" />
-        /// values are zero or negative. Since these are
-        /// page and entry counts, respectively, it is to be assumed that these
-        /// will always be positive values.
-        /// </exception>
-        /// <exception cref="T:System.ArgumentNullException">
-        /// Thrown if the <paramref name="urlExpression" /> parameter is not initialized.
-        /// </exception>
-        void InitializePagination(int pageSize, int totalEntries,
-            Func<int, string> urlExpression);
 
         /// <summary>
         /// Navigates to the last page in a thread-safe manner.

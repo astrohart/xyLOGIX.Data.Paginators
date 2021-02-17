@@ -49,7 +49,7 @@ namespace xyLOGIX.Data.Paginators.Tests
             1, _paginator.TotalPages
          ); // prior to initialization of paginator, TotalPages shall default to 1
          Assert.DoesNotThrow(
-            () => _paginator.InitializePagination(
+            () => ((IUrlPaginator)_paginator).InitializePagination(
                VALID_PAGE_SIZE, VALID_TOTAL_ENTRIES,
                page => $"https://coinmarketcap.com/{page}/"
             )

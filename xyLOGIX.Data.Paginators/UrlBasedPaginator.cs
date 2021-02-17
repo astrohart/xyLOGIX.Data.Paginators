@@ -1,5 +1,6 @@
 using System;
 using xyLOGIX.Data.Paginators.Events;
+using xyLOGIX.Data.Paginators.Interfaces;
 using xyLOGIX.Data.Paginators.Models;
 
 namespace xyLOGIX.Data.Paginators
@@ -7,7 +8,7 @@ namespace xyLOGIX.Data.Paginators
     /// <summary>
     /// Object that provides services for accessing paginated data from a data source.
     /// </summary>
-    public sealed class UrlBasedPaginator : PaginatorBase
+    public sealed class UrlBasedPaginator : PaginatorBase, IUrlPaginator
     {
         /// <summary>
         /// Constructs a new instance of
@@ -40,7 +41,46 @@ namespace xyLOGIX.Data.Paginators
         public UrlBasedPaginator(Pagination pagination)
         {
             Pagination = pagination;
+            CommonConstruct();
         }
+
+        /// <summary>
+        /// Constructs a new instance of
+        /// <see
+        ///     cref="T:CoinMarketCap.Data.Scraper.CoinMarketCapPagination" />
+        /// and
+        /// returns a reference to it.
+        /// </summary>
+        /// ///
+        /// <param name="pagination">
+        /// (Required.) Reference to an instance of a
+        /// <see
+        ///     cref="T:xyLOGIX.Data.Paginators.Models.Pagination" />
+        /// object that
+        /// provides the pagination data, such as current page, page size, total
+        /// entries, etc.
+        /// </param>
+        /// ///
+        /// <param name="urlExpression">
+        /// (Required.) Lambda expression that specifies how to format the URL
+        /// associated with the current page of data.
+        /// </param>
+        public UrlBasedPaginator(Pagination pagination,
+            Func<int, string> urlExpression)
+        {
+            Pagination = pagination;
+            UrlExpression = urlExpression;
+        }
+
+        /// <summary>
+        /// Gets an expression that tells us how to format the URL for each page.
+        /// </summary>
+        private Func<int, string> UrlExpression { get; set; }
+
+        /// <summary>
+        /// Occurs when the current page has been set to a new value.
+        /// </summary>
+        public override event PageChangedEventHandler PageChanged;
 
         /// <summary>
         /// Gets or sets an integer describing the current page.
@@ -71,7 +111,7 @@ namespace xyLOGIX.Data.Paginators
         /// </summary>
         public override bool IsInitialized
             => PageSize > 0 && TotalEntries > 0 && TotalPages > 0 &&
-               _urlExpression != null;
+               UrlExpression != null;
 
         /// <summary>
         /// Gets an integer describing the total number of entries on a page.
@@ -117,11 +157,6 @@ namespace xyLOGIX.Data.Paginators
             => TotalEntries > 0 && PageSize > 0
                 ? (TotalEntries + PageSize + 1) / PageSize
                 : 1;
-
-        /// <summary>
-        /// Occurs when the current page has been set to a new value.
-        /// </summary>
-        public override event PageChangedEventHandler PageChanged;
 
         /// <summary>
         /// Navigates to the first page in a thread-safe manner.
@@ -191,52 +226,7 @@ namespace xyLOGIX.Data.Paginators
                 return result;
             }
         }
-
-        /// <summary>
-        /// Called to initialize the values of the paginator parameters.
-        /// </summary>
-        /// <param name="pageSize">
-        /// (Required.) Positive integer specifying the number of entries on a page.
-        /// </param>
-        /// <param name="totalEntries">
-        /// (Required.) Positive integer specifying the total number of entries
-        /// across all pages.
-        /// </param>
-        /// <param name="urlExpression">
-        /// (Required.) A <see cref="T:System.Func" /> that takes the current
-        /// page number as the parameter and returns a string with the
-        /// properly-formatted URL for scraping the Nth page, where N is a
-        /// number equal to or greater than 1 and less than or equal to the
-        /// total number of pages.
-        /// </param>
-        /// <exception cref="T:System.ArgumentOutOfRangeException">
-        /// Thrown if either of the <paramref name="pageSize" /> or
-        /// <paramref
-        ///     name="totalEntries" />
-        /// values are zero or negative. Since these are
-        /// page and entry counts, respectively, it is to be assumed that these
-        /// will always be positive values.
-        /// </exception>
-        /// <exception cref="T:System.ArgumentNullException">
-        /// Thrown if the <paramref name="urlExpression" /> parameter is not initialized.
-        /// </exception>
-        public override void InitializePagination(int pageSize,
-            int totalEntries, Func<int, string> urlExpression)
-        {
-            if (pageSize <= 0)
-                throw new ArgumentOutOfRangeException(nameof(pageSize));
-            if (totalEntries <= 0)
-                throw new ArgumentOutOfRangeException(nameof(totalEntries));
-
-            CurrentPage = 1; // current page always starts at 1
-            PageSize = pageSize;
-            TotalEntries = totalEntries;
-            _urlExpression = urlExpression ??
-                             throw new ArgumentNullException(
-                                 nameof(urlExpression)
-                             );
-        }
-
+        
         /// <summary>
         /// Navigates to the last page in a thread-safe manner.
         /// </summary>
@@ -283,6 +273,36 @@ namespace xyLOGIX.Data.Paginators
             => GoToPage(--CurrentPage);
 
         /// <summary>
+        /// Initializes the lambda expression that specifies how to format URL
+        /// routes for the various pages.
+        /// </summary>
+        /// <param name="expression">
+        /// A <see cref="T:System.Func" /> delegate, that takes an integer
+        /// parameter and returns a string, that specifies how to format URLs
+        /// for each page.
+        /// </param>
+        /// <returns>
+        /// Reference to the same instance of the object that called this method, for fluent use.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullExpression">
+        /// Thrown if the <paramref name="expression" /> parameter is passed a
+        /// <c>null</c> value.
+        /// </exception>
+        public dynamic WithUrlExpression(Func<int, string> expression)
+        {
+            UrlExpression = expression ??
+                            throw new ArgumentNullException(nameof(expression));
+
+            return this;
+        }
+
+        /// <summary>
+        /// Specifies common initialization code for all constructors.
+        /// </summary>
+        protected override void CommonConstruct()
+            => UrlExpression = null;
+
+        /// <summary>
         /// Invokes the expression, if any, attached to the
         /// <see
         ///     cref="F:"
@@ -295,7 +315,7 @@ namespace xyLOGIX.Data.Paginators
         /// </param>
         /// <returns>String containing the </returns>
         protected override string OnFormatPageURL(int pageNumber)
-            => _urlExpression?.Invoke(pageNumber) ?? null;
+            => UrlExpression?.Invoke(pageNumber) ?? null;
 
         /// <summary>
         /// Raises the

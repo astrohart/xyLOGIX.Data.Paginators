@@ -14,29 +14,6 @@ namespace xyLOGIX.Data.Paginators
         protected readonly object SyncRoot = new object();
 
         /// <summary>
-        /// Expression that tells us how to format the URL for each page.
-        /// </summary>
-        protected Func<int, string> _urlExpression;
-
-        /// <summary>
-        /// Constructs a new instance of
-        /// <see
-        ///     cref="T:xyLOGIX.Data.Paginators.PaginatorBase" />
-        /// and returns a
-        /// reference to it.
-        /// </summary>
-        /// <remarks>
-        /// This default constructor initializes the
-        /// <see
-        ///     cref="F:xyLOGIX.Data.Paginators.PaginatorBase._urlExpression" />
-        /// field to <c>null</c>.
-        /// </remarks>
-        protected PaginatorBase()
-        {
-            _urlExpression = null;
-        }
-
-        /// <summary>
         /// Occurs when the current page has been set to a new value.
         /// </summary>
         public abstract event PageChangedEventHandler PageChanged;
@@ -147,37 +124,6 @@ namespace xyLOGIX.Data.Paginators
         public abstract string GoToPage(int page);
 
         /// <summary>
-        /// Called to initialize the values of the paginator parameters.
-        /// </summary>
-        /// <param name="pageSize">
-        /// (Required.) Positive integer specifying the number of entries on a page.
-        /// </param>
-        /// <param name="totalEntries">
-        /// (Required.) Positive integer specifying the total number of entries
-        /// across all pages.
-        /// </param>
-        /// <param name="urlExpression">
-        /// (Required.) A <see cref="T:System.Func" /> that takes the current
-        /// page number as the parameter and returns a string with the
-        /// properly-formatted URL for scraping the Nth page, where N is a
-        /// number equal to or greater than 1 and less than or equal to the
-        /// total number of pages.
-        /// </param>
-        /// <exception cref="T:System.ArgumentOutOfRangeException">
-        /// Thrown if either of the <paramref name="pageSize" /> or
-        /// <paramref
-        ///     name="totalEntries" />
-        /// values are zero or negative. Since these are
-        /// page and entry counts, respectively, it is to be assumed that these
-        /// will always be positive values.
-        /// </exception>
-        /// <exception cref="T:System.ArgumentNullException">
-        /// Thrown if the <paramref name="urlExpression" /> parameter is not initialized.
-        /// </exception>
-        public abstract void InitializePagination(int pageSize,
-            int totalEntries, Func<int, string> urlExpression);
-
-        /// <summary>
         /// Navigates to the last page in a thread-safe manner.
         /// </summary>
         /// <returns>
@@ -247,5 +193,10 @@ namespace xyLOGIX.Data.Paginators
         /// contains the event data.
         /// </param>
         protected abstract void OnPageChanged(PageChangedEventArgs e);
+
+        /// <summary>
+        /// Specifies common initialization code for all constructors.
+        /// </summary>
+        protected abstract void CommonConstruct();
     }
 }

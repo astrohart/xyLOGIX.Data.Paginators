@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Paginators.Fac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Paginators.Constants", "xyLOGIX.Data.Paginators.Constants\xyLOGIX.Data.Paginators.Constants.csproj", "{A753BB9E-F746-455F-B383-51F713325357}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Paginators.Models", "xyLOGIX.Data.Paginators.Models\xyLOGIX.Data.Paginators.Models.csproj", "{F2B953C1-0977-4802-AE2E-C500EB530793}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +83,14 @@ Global
 		{A753BB9E-F746-455F-B383-51F713325357}.Release|x64.Build.0 = Release|x64
 		{A753BB9E-F746-455F-B383-51F713325357}.Release|x86.ActiveCfg = Release|x86
 		{A753BB9E-F746-455F-B383-51F713325357}.Release|x86.Build.0 = Release|x86
+		{F2B953C1-0977-4802-AE2E-C500EB530793}.Debug|x64.ActiveCfg = Debug|x64
+		{F2B953C1-0977-4802-AE2E-C500EB530793}.Debug|x64.Build.0 = Debug|x64
+		{F2B953C1-0977-4802-AE2E-C500EB530793}.Debug|x86.ActiveCfg = Debug|x86
+		{F2B953C1-0977-4802-AE2E-C500EB530793}.Debug|x86.Build.0 = Debug|x86
+		{F2B953C1-0977-4802-AE2E-C500EB530793}.Release|x64.ActiveCfg = Release|x64
+		{F2B953C1-0977-4802-AE2E-C500EB530793}.Release|x64.Build.0 = Release|x64
+		{F2B953C1-0977-4802-AE2E-C500EB530793}.Release|x86.ActiveCfg = Release|x86
+		{F2B953C1-0977-4802-AE2E-C500EB530793}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

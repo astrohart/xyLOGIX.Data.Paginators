@@ -7,8 +7,7 @@ namespace xyLOGIX.Data.Paginators.Events
    /// Reference to the instance of the object that raised the event.
    /// </param>
    /// <param name="e">
-   /// A <see
-   /// cref="T:xyLOGIX.Data.Paginators.Interfaces.PageChangedEventArgs"/>
+   /// A <see cref="T:xyLOGIX.Data.Paginators.Interfaces.PageChangedEventArgs"/>
    /// that contains the event data.
    /// </param>
    public delegate void PageChangedEventHandler(object sender, PageChangedEventArgs e);

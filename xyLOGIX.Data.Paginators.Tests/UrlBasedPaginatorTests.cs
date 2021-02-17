@@ -33,8 +33,8 @@ namespace xyLOGIX.Data.Paginators.Tests
 
       /// <summary>
       /// Reference to an instance of an object that implements the <see
-      /// cref="T:xyLOGIX.Data.Paginators.Interfaces.IPaginator"/>
-      /// interface and which provides pagination services.
+      /// cref="T:xyLOGIX.Data.Paginators.Interfaces.IPaginator"/> interface and
+      /// which provides pagination services.
       /// </summary>
       private IPaginator _paginator;
 
@@ -44,7 +44,7 @@ namespace xyLOGIX.Data.Paginators.Tests
       [SetUp]
       public void Initialize()
       {
-         Assert.DoesNotThrow(()=>
+         Assert.DoesNotThrow(() =>
          _paginator = GetPaginator.OfType(PaginatorType.UrlPaginator)
             .HavingPagination(
                new Pagination(1, VALID_PAGE_SIZE, VALID_TOTAL_ENTRIES)
@@ -63,9 +63,8 @@ namespace xyLOGIX.Data.Paginators.Tests
 
       /// <summary>
       /// Asserts the <see
-      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Next"/>
-      /// method moves to the last page from the penultimate (i.e.,
-      /// next-to-last) page.
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Next"/> method
+      /// moves to the last page from the penultimate (i.e., next-to-last) page.
       /// </summary>
       [Test]
       public void Test_CallingNext_FromPenultimatePage_MovesToLast()
@@ -76,9 +75,9 @@ namespace xyLOGIX.Data.Paginators.Tests
 
       /// <summary>
       /// Asserts the <see
-      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Next"/>
-      /// method stays on the last page if that's the page the paginator is
-      /// already pointing at.
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Next"/> method
+      /// stays on the last page if that's the page the paginator is already
+      /// pointing at.
       /// </summary>
       [Test]
       public void Test_CallingNext_OnLastPage_StaysThere()
@@ -89,9 +88,8 @@ namespace xyLOGIX.Data.Paginators.Tests
 
       /// <summary>
       /// Asserts the <see
-      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Prev"/>
-      /// method stays on the first page if that's where the paginator is
-      /// currently pointing.
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Prev"/> method
+      /// stays on the first page if that's where the paginator is currently pointing.
       /// </summary>
       [Test]
       public void Test_CallingPrev_OnFirstPage_StaysThere()
@@ -102,8 +100,8 @@ namespace xyLOGIX.Data.Paginators.Tests
 
       /// <summary>
       /// Asserts the <see
-      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Prev"/>
-      /// method moves the paginator to the first page when called from page 2.
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Prev"/> method
+      /// moves the paginator to the first page when called from page 2.
       /// </summary>
       [Test]
       public void Test_CallingPrev_OnSecondPage_MovesToFirst()
@@ -114,9 +112,8 @@ namespace xyLOGIX.Data.Paginators.Tests
 
       /// <summary>
       /// Asserts the <see
-      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.First"/>
-      /// method sends us to the first page of data by returning the URL for
-      /// that page.
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.First"/> method
+      /// sends us to the first page of data by returning the URL for that page.
       /// </summary>
       [Test]
       public void Test_FirstMethod_SendsMeToFirstPage()
@@ -155,9 +152,8 @@ namespace xyLOGIX.Data.Paginators.Tests
 
       /// <summary>
       /// Asserts the <see
-      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Last"/>
-      /// method sends us to the final page of data by returning the URL for
-      /// that page.
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Last"/> method
+      /// sends us to the final page of data by returning the URL for that page.
       /// </summary>
       [Test]
       public void Test_LastMethod_SendsMeToFinalPage()
@@ -168,9 +164,9 @@ namespace xyLOGIX.Data.Paginators.Tests
 
       /// <summary>
       /// Asserts the <see
-      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Next"/>
-      /// method sends us to the page 11 of the data when starting from page 10.
-      /// page of data by returning the URL for that page.
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Next"/> method
+      /// sends us to the page 11 of the data when starting from page 10. page
+      /// of data by returning the URL for that page.
       /// </summary>
       [Test]
       public void Test_NextMethod_SendsMeToPage11_FromPage10()
@@ -196,9 +192,9 @@ namespace xyLOGIX.Data.Paginators.Tests
 
       /// <summary>
       /// Asserts the <see
-      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Prev"/>
-      /// method sends us to the page 9 of the data when starting from page 10.
-      /// page of data by returning the URL for that page.
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Prev"/> method
+      /// sends us to the page 9 of the data when starting from page 10. page of
+      /// data by returning the URL for that page.
       /// </summary>
       [Test]
       public void Test_PrevMethod_SendsMeToPage9_FromPage10()

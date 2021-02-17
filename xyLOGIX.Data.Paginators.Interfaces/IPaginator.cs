@@ -1,5 +1,6 @@
 using System;
 using xyLOGIX.Data.Paginators.Events;
+using xyLOGIX.Data.Paginators.Models;
 
 namespace xyLOGIX.Data.Paginators.Interfaces
 {

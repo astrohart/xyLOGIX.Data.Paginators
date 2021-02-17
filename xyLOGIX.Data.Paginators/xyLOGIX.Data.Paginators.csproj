@@ -68,7 +68,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pagination.cs" />
     <Compile Include="Paginator.cs" />
     <Compile Include="PaginatorBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +94,10 @@
     <ProjectReference Include="..\xyLOGIX.Data.Paginators.Interfaces\xyLOGIX.Data.Paginators.Interfaces.csproj">
       <Project>{d74ec18f-0a99-425e-94cf-9e38976cb7f7}</Project>
       <Name>xyLOGIX.Data.Paginators.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Data.Paginators.Models\xyLOGIX.Data.Paginators.Models.csproj">
+      <Project>{F2B953C1-0977-4802-AE2E-C500EB530793}</Project>
+      <Name>xyLOGIX.Data.Paginators.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,6 +2,7 @@
 using System;
 using xyLOGIX.Data.Paginators.Events;
 using xyLOGIX.Data.Paginators.Interfaces;
+using xyLOGIX.Data.Paginators.Models;
 
 namespace xyLOGIX.Data.Paginators.Tests
 {
@@ -41,7 +42,7 @@ namespace xyLOGIX.Data.Paginators.Tests
       [SetUp]
       public void Initialize()
       {
-         _paginator = new Paginator();
+         _paginator = new Paginator(new Pagination());
          _paginator.PageChanged += OnPaginatorPageChanged;
 
          Assert.AreEqual(

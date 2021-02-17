@@ -98,4 +98,13 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
+	<data name="Error_CurrentPage_OutOfRange" xml:space="preserve">
+		<value>The value for currentPage must be 1 or greater.</value>
+	</data>
+	<data name="Error_PageSizeMustBePositiveIntegerOrZero" xml:space="preserve">
+		<value>The pageSize parameter must be zero or greater.</value>
+	</data>
+	<data name="Error_TotalEntriesMustBePositive" xml:space="preserve">
+		<value>The total number of entries must be zero or greater.</value>
+	</data>
 </root>

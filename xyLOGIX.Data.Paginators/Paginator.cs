@@ -1,5 +1,6 @@
 using System;
 using xyLOGIX.Data.Paginators.Events;
+using xyLOGIX.Data.Paginators.Models;
 
 namespace xyLOGIX.Data.Paginators
 {
@@ -15,6 +16,15 @@ namespace xyLOGIX.Data.Paginators
         /// and
         /// returns a reference to it.
         /// </summary>
+        /// ///
+        /// <param name="pagination">
+        /// (Required.) Reference to an instance of a
+        /// <see
+        ///     cref="T:xyLOGIX.Data.Paginators.Models.Pagination" />
+        /// object that
+        /// provides the pagination data, such as current page, page size, total
+        /// entries, etc.
+        /// </param>
         public Paginator(Pagination pagination)
         {
             Pagination = pagination;

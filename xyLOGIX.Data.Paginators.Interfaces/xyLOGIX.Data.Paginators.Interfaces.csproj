@@ -90,6 +90,10 @@
       <Project>{1571453c-bb35-4b06-a66c-eaf328dfb325}</Project>
       <Name>xyLOGIX.Data.Paginators.Events</Name>
     </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Data.Paginators.Models\xyLOGIX.Data.Paginators.Models.csproj">
+      <Project>{F2B953C1-0977-4802-AE2E-C500EB530793}</Project>
+      <Name>xyLOGIX.Data.Paginators.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

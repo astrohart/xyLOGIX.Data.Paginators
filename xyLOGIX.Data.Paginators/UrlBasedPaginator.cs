@@ -12,6 +12,18 @@ namespace xyLOGIX.Data.Paginators
         /// <summary>
         /// Constructs a new instance of
         /// <see
+        ///     cref="T:xyLOGIX.Data.Paginators.UrlBasedPaginator" />
+        /// and returns a
+        /// reference to it.
+        /// </summary>
+        public UrlBasedPaginator()
+        {
+            Pagination = new Pagination();
+        }
+
+        /// <summary>
+        /// Constructs a new instance of
+        /// <see
         ///     cref="T:CoinMarketCap.Data.Scraper.CoinMarketCapPagination" />
         /// and
         /// returns a reference to it.
@@ -28,7 +40,6 @@ namespace xyLOGIX.Data.Paginators
         public UrlBasedPaginator(Pagination pagination)
         {
             Pagination = pagination;
-            _urlExpression = null;
         }
 
         /// <summary>

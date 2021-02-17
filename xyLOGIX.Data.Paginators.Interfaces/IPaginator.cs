@@ -58,6 +58,14 @@ namespace xyLOGIX.Data.Paginators.Interfaces
       int TotalPages { get; }
 
       /// <summary>
+      /// Gets a reference to a
+      /// <see
+      ///     cref="T:xyLOGIX.Data.Paginators.Pagination" />
+      /// object.
+      /// </summary>
+      Pagination Pagination { get; }
+
+      /// <summary>
       /// Navigates to the first page in a thread-safe manner.
       /// </summary>
       /// <returns>

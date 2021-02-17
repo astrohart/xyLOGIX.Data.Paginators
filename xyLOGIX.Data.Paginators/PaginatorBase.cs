@@ -63,6 +63,14 @@ namespace xyLOGIX.Data.Paginators
       public abstract int TotalPages { get; }
 
       /// <summary>
+      /// Gets a reference to a
+      /// <see
+      ///     cref="T:xyLOGIX.Data.Paginators.Pagination" />
+      /// object.
+      /// </summary>
+      public abstract Pagination Pagination { get; }
+
+      /// <summary>
       /// Occurs when the current page has been set to a new value.
       /// </summary>
       public abstract event PageChangedEventHandler PageChanged;

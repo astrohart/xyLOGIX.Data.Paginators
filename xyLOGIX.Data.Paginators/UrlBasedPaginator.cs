@@ -97,7 +97,7 @@ namespace xyLOGIX.Data.Paginators
       /// </summary>
       public override int PageSize
       {
-         protected set { Pagination.PageSize = value; }
+         set { Pagination.PageSize = value; }
          get { return Pagination.PageSize; }
       }
 
@@ -123,7 +123,7 @@ namespace xyLOGIX.Data.Paginators
       /// </summary>
       public override int TotalEntries
       {
-         protected set { Pagination.TotalEntries = value; }
+         set { Pagination.TotalEntries = value; }
          get { return Pagination.TotalEntries; }
       }
 

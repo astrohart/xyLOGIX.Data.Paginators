@@ -36,7 +36,7 @@ namespace xyLOGIX.Data.Paginators.Interfaces
       /// <summary>
       /// Gets an integer describing the total number of entries on a page.
       /// </summary>
-      int PageSize { get; }
+      int PageSize { get; set; }
 
       /// <summary>
       /// Gets a string containing the URL of the current page.
@@ -45,14 +45,16 @@ namespace xyLOGIX.Data.Paginators.Interfaces
 
       /// <summary>
       /// Gets a reference to a <see
-      /// cref="T:xyLOGIX.Data.Paginators.Pagination"/> object.
+      /// cref="T:xyLOGIX.Data.Paginators.Models.Pagination"/> object that
+      /// defines the pagination parameters, such as current page, page size,
+      /// total entries, etc.
       /// </summary>
       Pagination Pagination { get; }
 
       /// <summary>
       /// Gets an integer describing the total number of entries in the entire listing.
       /// </summary>
-      int TotalEntries { get; }
+      int TotalEntries { get; set; }
 
       /// <summary>
       /// Gets an integer describing the total number of pages.
@@ -100,6 +102,22 @@ namespace xyLOGIX.Data.Paginators.Interfaces
       /// fluent use.
       /// </returns>
       dynamic HavingPagination(Pagination pagination);
+
+      /// <summary>
+      /// Initializes this paginator to start with default settings for Current
+      /// Page (= 1), Page Size (= 0), and Total Entries (= 0).
+      /// </summary>
+      /// <returns>
+      /// Reference to the same instance of the object that called this method,
+      /// for fluent use.
+      /// </returns>
+      /// <remarks>
+      /// This method simply initializes a new pagination parameter object and
+      /// sets the <see
+      /// cref="P:xyLOGIX.Data.Paginators.PaginatorBase.Pagination"/> property
+      /// to it.
+      /// </remarks>
+      dynamic HavingStartingPagination();
 
       /// <summary>
       /// Navigates to the last page in a thread-safe manner.

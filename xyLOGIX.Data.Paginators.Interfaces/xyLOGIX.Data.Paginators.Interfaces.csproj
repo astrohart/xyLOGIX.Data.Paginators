@@ -88,7 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xyLOGIX.Data.Paginators.Events\xyLOGIX.Data.Paginators.Events.csproj">
-      <Project>{1571453c-bb35-4b06-a66c-eaf328dfb325}</Project>
+      <Project>{1571453C-BB35-4B06-A66C-EAF328DFB325}</Project>
       <Name>xyLOGIX.Data.Paginators.Events</Name>
     </ProjectReference>
     <ProjectReference Include="..\xyLOGIX.Data.Paginators.Models\xyLOGIX.Data.Paginators.Models.csproj">

@@ -94,9 +94,6 @@
     <Content Include="1382_cogs.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\xyLOGIX.Data.Paginators.Constants\xyLOGIX.Data.Paginators.Constants.csproj">
       <Project>{A753BB9E-F746-455F-B383-51F713325357}</Project>
       <Name>xyLOGIX.Data.Paginators.Constants</Name>

@@ -56,7 +56,7 @@ xyLOGIX.Data.Paginators
 
 ##### Summary
 
-Defines the events, methods, properties, and behaviors for all Paginator objects.
+Defines the events, methods, properties, and behaviors for all Paginator object.
 
 <a name='F-xyLOGIX-Data-Paginators-PaginatorBase-SyncRoot'></a>
 ### SyncRoot `constants`

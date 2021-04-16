@@ -158,6 +158,7 @@
     )
     copy /Y "$(TargetDir)$(ProjectName).md" "$(ProjectDir)README.md"
     git config core.autocrlf true
+    git add .
     git commit -a -m "Update README.md"
     git push -u origin master
 )

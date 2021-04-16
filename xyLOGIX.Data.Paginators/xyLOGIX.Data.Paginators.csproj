@@ -7,8 +7,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <ProjectGuid>{919790E2-EC4C-4B37-B375-B8FA02C89991}</ProjectGuid>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -154,8 +153,8 @@
     if exist "$(ProjectDir)README.md" (
         erase /F /Q "$(ProjectDir)README.md"
     )
-    copy /Y "$(TargetDir)$(ProjectName).md" "$(ProjectDir)README.md"
-    git config core.autocrlf true
+    copy /Y "$(TargetDir)$(ProjectName).md" "$(ProjectDir)README.md"    git config core.autocrlf true
+
     git commit -a -m "Update README.md"
     git push -u origin master
 )

@@ -6,7 +6,7 @@ using xyLOGIX.Data.Paginators.Models;
 namespace xyLOGIX.Data.Paginators
 {
     /// <summary>
-    /// Defines the events, methods, properties, and behaviors for all Paginator objects.
+    /// Defines the events, methods, properties, and behaviors for all Paginator object.
     /// </summary>
     public abstract class PaginatorBase : IPaginator
     {

@@ -149,8 +149,8 @@
     if exist "$(ProjectDir)README.md" (
         erase /F /Q "$(ProjectDir)README.md"
     )
-    copy /Y "$(TargetDir)$(ProjectName).md" "$(ProjectDir)README.md"    git config core.autocrlf true
-
+    copy /Y "$(TargetDir)$(ProjectName).md" "$(ProjectDir)README.md"
+    git config core.autocrlf true
     git commit -a -m "Update README.md"
     git push -u origin master
 )

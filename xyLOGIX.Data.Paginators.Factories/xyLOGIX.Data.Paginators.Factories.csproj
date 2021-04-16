@@ -152,22 +152,21 @@
   <Import Project="..\packages\PostSharp.6.9.4\build\PostSharp.targets" Condition="Exists('..\packages\PostSharp.6.9.4\build\PostSharp.targets')" />
   <Import Project="..\packages\Vsxmd.1.4.5\build\Vsxmd.targets" Condition="Exists('..\packages\Vsxmd.1.4.5\build\Vsxmd.targets')" />
   <PropertyGroup>
-    <PreBuildEvent>if exist "$(SolutionDir).git\.gitconfig.lock" erase /F /S /Q "$(SolutionDir).git\.gitconfig.lock"
+    <PreBuildEvent>exit /b 0
 if exist "$(TargetDir)$(ProjectName).md" (
     if exist "$(ProjectDir)README.md" (
         erase /F /Q "$(ProjectDir)README.md"
     )
     copy /Y "$(TargetDir)$(ProjectName).md" "$(ProjectDir)README.md"
-    git config core.autocrlf true
-    git add .
-    git commit -a -m "Update README.md"
-    git pull --rebase
+    git add "$(ProjectDir)README.md"
+    git commit -m "Update README.md"
     git push -u origin master
 )
 exit /b 0</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>if "$(ConfigurationName)"=="Release" (
+    <PostBuildEvent>exit /b 0
+if "$(ConfigurationName)"=="Release" (
 	erase /F /S /Q "$(TargetDir)*.pdb"
 	erase /F /S /Q "$(TargetDir)*.config"
 	erase /F /S /Q "$(TargetDir)*.vshost.exe"

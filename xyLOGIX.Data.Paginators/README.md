@@ -19,6 +19,7 @@
   - [HavingStartingPagination()](#M-xyLOGIX-Data-Paginators-PaginatorBase-HavingStartingPagination 'xyLOGIX.Data.Paginators.PaginatorBase.HavingStartingPagination')
   - [Last()](#M-xyLOGIX-Data-Paginators-PaginatorBase-Last 'xyLOGIX.Data.Paginators.PaginatorBase.Last')
   - [Next()](#M-xyLOGIX-Data-Paginators-PaginatorBase-Next 'xyLOGIX.Data.Paginators.PaginatorBase.Next')
+  - [OnFormatPageURL(pageNumber)](#M-xyLOGIX-Data-Paginators-PaginatorBase-OnFormatPageURL-System-Int32- 'xyLOGIX.Data.Paginators.PaginatorBase.OnFormatPageURL(System.Int32)')
   - [OnPageChanged(e)](#M-xyLOGIX-Data-Paginators-PaginatorBase-OnPageChanged-xyLOGIX-Data-Paginators-Events-PageChangedEventArgs- 'xyLOGIX.Data.Paginators.PaginatorBase.OnPageChanged(xyLOGIX.Data.Paginators.Events.PageChangedEventArgs)')
   - [Prev()](#M-xyLOGIX-Data-Paginators-PaginatorBase-Prev 'xyLOGIX.Data.Paginators.PaginatorBase.Prev')
 - [Resources](#T-xyLOGIX-Data-Paginators-Properties-Resources 'xyLOGIX.Data.Paginators.Properties.Resources')
@@ -42,6 +43,7 @@
   - [GoToPage(page)](#M-xyLOGIX-Data-Paginators-UrlBasedPaginator-GoToPage-System-Int32- 'xyLOGIX.Data.Paginators.UrlBasedPaginator.GoToPage(System.Int32)')
   - [Last()](#M-xyLOGIX-Data-Paginators-UrlBasedPaginator-Last 'xyLOGIX.Data.Paginators.UrlBasedPaginator.Last')
   - [Next()](#M-xyLOGIX-Data-Paginators-UrlBasedPaginator-Next 'xyLOGIX.Data.Paginators.UrlBasedPaginator.Next')
+  - [OnFormatPageURL(pageNumber)](#M-xyLOGIX-Data-Paginators-UrlBasedPaginator-OnFormatPageURL-System-Int32- 'xyLOGIX.Data.Paginators.UrlBasedPaginator.OnFormatPageURL(System.Int32)')
   - [OnPageChanged(e)](#M-xyLOGIX-Data-Paginators-UrlBasedPaginator-OnPageChanged-xyLOGIX-Data-Paginators-Events-PageChangedEventArgs- 'xyLOGIX.Data.Paginators.UrlBasedPaginator.OnPageChanged(xyLOGIX.Data.Paginators.Events.PageChangedEventArgs)')
   - [Prev()](#M-xyLOGIX-Data-Paginators-UrlBasedPaginator-Prev 'xyLOGIX.Data.Paginators.UrlBasedPaginator.Prev')
 
@@ -51,6 +53,10 @@
 ##### Namespace
 
 xyLOGIX.Data.Paginators
+
+##### Summary
+
+Defines the events, methods, properties, and behaviors for all Paginator objects.
 
 <a name='F-xyLOGIX-Data-Paginators-PaginatorBase-SyncRoot'></a>
 ### SyncRoot `constants`
@@ -274,6 +280,26 @@ This method has no parameters.
 Implementers of this method should call the
 [GoToPage](#M-xyLOGIX-Data-Paginators-IPaginator-GoToPage 'xyLOGIX.Data.Paginators.IPaginator.GoToPage')
 method internally.
+
+<a name='M-xyLOGIX-Data-Paginators-PaginatorBase-OnFormatPageURL-System-Int32-'></a>
+### OnFormatPageURL(pageNumber) `method`
+
+##### Summary
+
+Invokes the expression, if any, attached to the
+[_urlExpression](#F-                 CoinMarketCap-Data-Scraper-Interfaces-CoinMarketCapPagination-_urlExpression '                 CoinMarketCap.Data.Scraper.Interfaces.CoinMarketCapPagination._urlExpression')
+delegate.
+
+##### Returns
+
+String containing the
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| pageNumber | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Page number of the
+current page. |
 
 <a name='M-xyLOGIX-Data-Paginators-PaginatorBase-OnPageChanged-xyLOGIX-Data-Paginators-Events-PageChangedEventArgs-'></a>
 ### OnPageChanged(e) `method`
@@ -580,6 +606,24 @@ This method has no parameters.
 ##### Remarks
 
 Implementers of this method should call the [GoToPage](#M-xyLOGIX-Data-Paginators-IPaginator-GoToPage 'xyLOGIX.Data.Paginators.IPaginator.GoToPage') method internally.
+
+<a name='M-xyLOGIX-Data-Paginators-UrlBasedPaginator-OnFormatPageURL-System-Int32-'></a>
+### OnFormatPageURL(pageNumber) `method`
+
+##### Summary
+
+Invokes the expression, if any, attached to the [_urlExpression](#F-CoinMarketCap-Data-Scraper-Interfaces-CoinMarketCapPagination-_urlExpression 'CoinMarketCap.Data.Scraper.Interfaces.CoinMarketCapPagination._urlExpression') delegate.
+
+##### Returns
+
+String containing the
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| pageNumber | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Page number of the
+current page. |
 
 <a name='M-xyLOGIX-Data-Paginators-UrlBasedPaginator-OnPageChanged-xyLOGIX-Data-Paginators-Events-PageChangedEventArgs-'></a>
 ### OnPageChanged(e) `method`

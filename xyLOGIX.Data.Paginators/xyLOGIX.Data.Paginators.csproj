@@ -157,6 +157,7 @@
     git config core.autocrlf true
     git add .
     git commit -a -m "Update README.md"
+    git pull --rebase
     git push -u origin master
 )
 exit /b 0</PreBuildEvent>

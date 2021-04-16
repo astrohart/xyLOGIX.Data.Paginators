@@ -278,8 +278,7 @@ namespace xyLOGIX.Data.Paginators
           => UrlExpression = null;
 
       /// <summary> Invokes the expression, if any, attached to the <see
-      /// cref="F:"
-      /// CoinMarketCap.Data.Scraper.Interfaces.CoinMarketCapPagination._urlExpression
+      /// cref="F:CoinMarketCap.Data.Scraper.Interfaces.CoinMarketCapPagination._urlExpression"
       /// /> delegate. </summary> <param name="pageNumber"> Page number of the
       /// current page. </param> <returns>String containing the </returns>
       protected override string OnFormatPageURL(int pageNumber)

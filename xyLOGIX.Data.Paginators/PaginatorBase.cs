@@ -5,6 +5,9 @@ using xyLOGIX.Data.Paginators.Models;
 
 namespace xyLOGIX.Data.Paginators
 {
+    /// <summary>
+    /// Defines the events, methods, properties, and behaviors for all Paginator objects.
+    /// </summary>
     public abstract class PaginatorBase : IPaginator
     {
         /// <summary>
@@ -201,8 +204,8 @@ namespace xyLOGIX.Data.Paginators
         /// <summary>
         /// Invokes the expression, if any, attached to the
         /// <see
-        ///     cref="F:"
-        ///     CoinMarketCap.Data.Scraper.Interfaces.CoinMarketCapPagination._urlExpression />
+        ///     cref="F:
+        ///     CoinMarketCap.Data.Scraper.Interfaces.CoinMarketCapPagination._urlExpression" />
         /// delegate.
         /// </summary>
         /// <param name="pageNumber">

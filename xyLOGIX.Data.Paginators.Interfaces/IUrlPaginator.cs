@@ -27,7 +27,7 @@ namespace xyLOGIX.Data.Paginators.Interfaces
       /// </returns>
       /// <exception cref="T:System.ArgumentNullExpression">
       /// Thrown if the <paramref name="expression"/> parameter is passed a
-      /// <c>null</c> value.
+      /// <see langword="null" /> value.
       /// </exception>
       dynamic AndUrlFormat(Func<int, string> expression);
    }

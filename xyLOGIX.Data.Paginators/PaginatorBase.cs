@@ -122,7 +122,7 @@ namespace xyLOGIX.Data.Paginators
         /// </returns>
         /// <exception cref="T:ArgumentNullException">
         /// Thrown if the required parameter, <paramref name="pagination" />, is
-        /// passed a <c>null</c> value.
+        /// passed a <see langword="null" /> value.
         /// </exception>
         public dynamic HavingPagination(Pagination pagination)
         {

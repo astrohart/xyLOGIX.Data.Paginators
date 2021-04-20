@@ -8,7 +8,8 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <ProjectGuid>{61C9C22D-A1BD-4DEF-99C0-CC707EBD816A}</ProjectGuid>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -132,7 +133,7 @@
       <Name>xyLOGIX.Data.Paginators.Events</Name>
     </ProjectReference>
     <ProjectReference Include="..\xyLOGIX.Data.Paginators.Factories\xyLOGIX.Data.Paginators.Factories.csproj">
-      <Project>{84C1F71A-AAA4-4A08-9728-19E710965E4D}</Project>
+      <Project>{F69BCD9D-67CD-4F4F-9F26-AE9C86DCB6B9}</Project>
       <Name>xyLOGIX.Data.Paginators.Factories</Name>
     </ProjectReference>
     <ProjectReference Include="..\xyLOGIX.Data.Paginators.Interfaces\xyLOGIX.Data.Paginators.Interfaces.csproj">

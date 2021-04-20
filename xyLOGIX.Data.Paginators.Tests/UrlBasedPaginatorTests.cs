@@ -8,38 +8,43 @@ using xyLOGIX.Data.Paginators.Models;
 
 namespace xyLOGIX.Data.Paginators.Tests
 {
-   /// <summary>
-   /// Provides unit tests for the
-   /// <see
-   ///     cref="T:xyLOGIX.Data.Paginators.Paginator" />
-   /// class.
-   /// </summary>
-   [TestFixture]
+    /// <summary>
+    /// Provides unit tests for the
+    /// <see
+    ///     cref="T:xyLOGIX.Data.Paginators.Paginator" />
+    /// class.
+    /// </summary>
+    [TestFixture]
     public class UrlBasedPaginatorTests
     {
-       /// <summary>
-       /// Sets up the initial conditions for all the unit tests.
-       /// </summary>
-       /// <remarks>
-       /// This particular implementation instantiates a paginator object and
-       /// places a reference to it in the
-       /// <see
-       ///     cref="F:xyLOGIX.Data.Paginators.Tests.UrlBasedPaginatorTests._paginator" />
-       /// field.
-       /// </remarks>
-       [SetUp]
+        /// <summary>
+        /// Sets up the initial conditions for all the unit tests.
+        /// </summary>
+        /// <remarks>
+        /// This particular implementation instantiates a paginator object and
+        /// places a reference to it in the
+        /// <see
+        ///     cref="F:xyLOGIX.Data.Paginators.Tests.UrlBasedPaginatorTests._paginator" />
+        /// field.
+        /// </remarks>
+        [SetUp]
         public void Initialize()
         {
             Assert.DoesNotThrow(
                 () => _paginator = GetPaginator
-                    .OfType(PaginatorType.UrlPaginator)
-                    .HavingPagination(
-                        new Pagination(1, VALID_PAGE_SIZE, VALID_TOTAL_ENTRIES)
-                    ).AndUrlFormat(
-                        new Func<int, string>(
-                            page => $"https://coinmarketcap.com/{page}/"
-                        )
-                    ) as IUrlPaginator
+                                   .OfType(PaginatorType.UrlPaginator)
+                                   .HavingPagination(
+                                       new Pagination(
+                                           1, VALID_PAGE_SIZE,
+                                           VALID_TOTAL_ENTRIES
+                                       )
+                                   )
+                                   .AndUrlFormat(
+                                       new Func<int, string>(
+                                           page
+                                               => $"https://coinmarketcap.com/{page}/"
+                                       )
+                                   ) as IUrlPaginator
             );
             Assert.IsNotNull(_paginator);
 
@@ -70,8 +75,8 @@ namespace xyLOGIX.Data.Paginators.Tests
         /// Reference to an instance of an object that implements the
         /// <see
         ///     cref="T:xyLOGIX.Data.Paginators.Interfaces.IPaginator" />
-        /// interface and
-        /// which provides pagination services.
+        /// interface
+        /// and which provides pagination services.
         /// </summary>
         private IPaginator _paginator;
 
@@ -139,8 +144,8 @@ namespace xyLOGIX.Data.Paginators.Tests
         /// Asserts the
         /// <see
         ///     cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.First" />
-        /// method
-        /// sends us to the first page of data by returning the URL for that page.
+        /// method sends us to the first page of data by returning the URL for
+        /// that page.
         /// </summary>
         [Test]
         public void Test_FirstMethod_SendsMeToFirstPage()
@@ -237,8 +242,8 @@ namespace xyLOGIX.Data.Paginators.Tests
         /// <see
         ///     cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Prev" />
         /// method
-        /// sends us to the page 9 of the data when starting from page 10. page of
-        /// data by returning the URL for that page.
+        /// sends us to the page 9 of the data when starting from page 10. page
+        /// of data by returning the URL for that page.
         /// </summary>
         [Test]
         public void Test_PrevMethod_SendsMeToPage9_FromPage10()

@@ -31,7 +31,7 @@ namespace xyLOGIX.Data.Paginators.Tests
         public void Initialize()
         {
             Assert.DoesNotThrow(
-                () => _paginator = GetPaginator
+                () => _paginator = GetScrapedDataPaginator
                                    .OfType(PaginatorType.UrlPaginator)
                                    .HavingPagination(
                                        new Pagination(
@@ -74,12 +74,15 @@ namespace xyLOGIX.Data.Paginators.Tests
         /// <summary>
         /// Reference to an instance of an object that implements the
         /// <see
-        ///     cref="T:xyLOGIX.Data.Paginators.Interfaces.IPaginator" />
+        ///     cref="T:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator" />
         /// interface
         /// and which provides pagination services.
         /// </summary>
-        private IPaginator _paginator;
+        private IScrapedDataPaginator _paginator;
 
+        /// <summary>
+        /// Gets a formatted, valid URL for the final page worth of CoinMarketCap data.
+        /// </summary>
         private string VALID_COINMARKETCAP_FINAL_PAGE_URL
             => $"https://coinmarketcap.com/{_paginator.TotalPages}/";
 

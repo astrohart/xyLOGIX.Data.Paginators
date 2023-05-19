@@ -8,15 +8,15 @@ namespace xyLOGIX.Data.Paginators.Factories
    /// <summary>
    /// Creates instances of objects that implement the
    /// <see
-   ///     cref="T:xyLOGIX.Data.Paginators.Interfaces.IPaginator" />
+   ///     cref="T:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator" />
    /// interface.
    /// </summary>
-   public static class GetPaginator
+   public static class GetScrapedDataPaginator
     {
        /// <summary>
        /// Creates an instance of an object implementing the
        /// <see
-       ///     cref="T:xyLOGIX.Data.Paginators.Interfaces.IPaginator" />
+       ///     cref="T:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator" />
        /// interface
        /// which corresponds to the value specified in <paramref name="type" />,
        /// and returns a reference to it.
@@ -31,7 +31,7 @@ namespace xyLOGIX.Data.Paginators.Factories
        /// <returns>
        /// A reference to the instance of the object that implements the
        /// <see
-       ///     cref="T:xyLOGIX.Data.Paginators.Interfaces.IPaginator" />
+       ///     cref="T:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator" />
        /// interface
        /// which corresponds to the value specified in <paramref name="type" />.
        /// </returns>
@@ -43,23 +43,23 @@ namespace xyLOGIX.Data.Paginators.Factories
        /// Thrown if there is no corresponding concrete type defined that
        /// implements the
        /// <see
-       ///     cref="T:xyLOGIX.Data.Paginators.Interfaces.IPaginator" />
+       ///     cref="T:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator" />
        /// interface and
        /// which corresponds to the value passed in the <paramref name="type" />
        /// parameter.
        /// </exception>
-       public static IPaginator OfType(PaginatorType type)
+       public static IScrapedDataPaginator OfType(PaginatorType type)
         {
             // write the name of the current class and method we are now entering,
             // into the log
-            DebugUtils.WriteLine(DebugLevel.Debug, "In GetPaginator.OfType");
+            DebugUtils.WriteLine(DebugLevel.Debug, "In GetScrapedDataPaginator.OfType");
 
             // Dump the parameter type to the log
             DebugUtils.WriteLine(
-                DebugLevel.Debug, $"GetPaginator.OfType: type = '{type}'"
+                DebugLevel.Debug, $"GetScrapedDataPaginator.OfType: type = '{type}'"
             );
 
-            IPaginator result;
+            IScrapedDataPaginator result;
 
             switch (type)
             {

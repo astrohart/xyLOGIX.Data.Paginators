@@ -7,7 +7,7 @@ namespace xyLOGIX.Data.Paginators.Interfaces
    /// Defines the public-exposed methods and properties of an object that
    /// manages the pagination of scraped data.
    /// </summary>
-   public interface IPaginator
+   public interface IScrapedDataPaginator
    {
       /// <summary>
       /// Occurs when the current page has been set to a new value.
@@ -19,17 +19,17 @@ namespace xyLOGIX.Data.Paginators.Interfaces
       /// </summary>
       /// <remarks>
       /// The value of this property can be changed using the <see
-      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.First"/> , <see
-      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Prev"/> , <see
-      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.GoToPage"/> ,
-      /// <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Next"/> ,
-      /// or <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Last"/>
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator.First"/> , <see
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator.Prev"/> , <see
+      /// cref="M:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator.GoToPage"/> ,
+      /// <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator.Next"/> ,
+      /// or <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator.Last"/>
       /// methods in a robust, fault-tolerant, and thread-safe manner.
       /// </remarks>
       int CurrentPage { get; }
 
       /// <summary>
-      /// Gets a value indicating whether the paginator is initialized.
+      /// Gets a value indicating whether the scrapedDataPaginator is initialized.
       /// </summary>
       bool IsInitialized { get; }
 
@@ -69,12 +69,12 @@ namespace xyLOGIX.Data.Paginators.Interfaces
       /// </returns>
       /// <remarks>
       /// Implementers of this method should call the <see
-      /// cref="M:xyLOGIX.Data.Paginators.IPaginator.GoToPage"/> method internally.
+      /// cref="M:xyLOGIX.Data.Paginators.IScrapedDataPaginator.GoToPage"/> method internally.
       /// </remarks>
       string First();
 
       /// <summary>
-      /// Attempts the paginator to the desired <paramref name="page"/> in a
+      /// Attempts the scrapedDataPaginator to the desired <paramref name="page"/> in a
       /// robust, fault-tolerant, and thread-safe manner.
       /// </summary>
       /// <param name="page">
@@ -104,7 +104,7 @@ namespace xyLOGIX.Data.Paginators.Interfaces
       dynamic HavingPagination(Pagination pagination);
 
       /// <summary>
-      /// Initializes this paginator to start with default settings for Current
+      /// Initializes this scrapedDataPaginator to start with default settings for Current
       /// Page (= 1), Page Size (= 0), and Total Entries (= 0).
       /// </summary>
       /// <returns>
@@ -127,7 +127,7 @@ namespace xyLOGIX.Data.Paginators.Interfaces
       /// </returns>
       /// <remarks>
       /// Implementers of this method should call the <see
-      /// cref="M:xyLOGIX.Data.Paginators.IPaginator.GoToPage"/> method internally.
+      /// cref="M:xyLOGIX.Data.Paginators.IScrapedDataPaginator.GoToPage"/> method internally.
       /// </remarks>
       string Last();
 
@@ -139,7 +139,7 @@ namespace xyLOGIX.Data.Paginators.Interfaces
       /// </returns>
       /// <remarks>
       /// Implementers of this method should call the <see
-      /// cref="M:xyLOGIX.Data.Paginators.IPaginator.GoToPage"/> method internally.
+      /// cref="M:xyLOGIX.Data.Paginators.IScrapedDataPaginator.GoToPage"/> method internally.
       /// </remarks>
       string Next();
 
@@ -151,7 +151,7 @@ namespace xyLOGIX.Data.Paginators.Interfaces
       /// </returns>
       /// <remarks>
       /// Implementers of this method should call the <see
-      /// cref="M:xyLOGIX.Data.Paginators.IPaginator.GoToPage"/> method internally.
+      /// cref="M:xyLOGIX.Data.Paginators.IScrapedDataPaginator.GoToPage"/> method internally.
       /// </remarks>
       string Prev();
    }

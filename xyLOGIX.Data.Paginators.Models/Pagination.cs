@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using xyLOGIX.Data.Paginators.Models.Properties;
 
 namespace xyLOGIX.Data.Paginators.Models

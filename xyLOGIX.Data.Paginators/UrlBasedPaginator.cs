@@ -10,7 +10,7 @@ namespace xyLOGIX.Data.Paginators
     /// Object that provides services for accessing paginated data from a
     /// data source.
     /// </summary>
-    [Actor]
+    [Synchronized]
     public sealed class UrlBasedPaginator : PaginatorBase, IUrlPaginator
     {
         /// <summary>
@@ -250,6 +250,7 @@ namespace xyLOGIX.Data.Paginators
         /// String containing the URL of the page having the specified
         /// <paramref name="pageNumber" />.
         /// </returns>
+        [Yielder]
         protected override string OnFormatPageURL(int pageNumber)
             => UrlExpression?.Invoke(pageNumber) ?? null;
 
@@ -262,6 +263,7 @@ namespace xyLOGIX.Data.Paginators
         /// <see cref="T:xyLOGIX.Data.Paginators.Events.PageChangedEventArgs" /> that
         /// contains the event data.
         /// </param>
+        [Yielder]
         protected override void OnPageChanged(PageChangedEventArgs e)
             => PageChanged?.Invoke(this, e);
     }

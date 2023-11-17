@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PostSharp.Patterns.Threading;
+using System;
 using xyLOGIX.Data.Paginators.Events;
 using xyLOGIX.Data.Paginators.Interfaces;
 using xyLOGIX.Data.Paginators.Models;
@@ -247,6 +248,7 @@ namespace xyLOGIX.Data.Paginators
         /// </summary>
         /// <param name="pageNumber"> Page number of the current page. </param>
         /// <returns>String containing the </returns>
+        [Yielder]
         protected override string OnFormatPageURL(int pageNumber)
             => UrlExpression?.Invoke(pageNumber) ?? null;
 
@@ -259,6 +261,7 @@ namespace xyLOGIX.Data.Paginators
         /// <see cref="T:xyLOGIX.Data.Paginators.Events.PageChangedEventArgs" /> that
         /// contains the event data.
         /// </param>
+        [Yielder]
         protected override void OnPageChanged(PageChangedEventArgs e)
             => PageChanged?.Invoke(this, e);
     }

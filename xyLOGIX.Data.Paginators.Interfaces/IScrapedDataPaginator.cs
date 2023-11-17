@@ -1,5 +1,4 @@
-﻿using PostSharp.Patterns.Threading;
-using xyLOGIX.Data.Paginators.Events;
+﻿using xyLOGIX.Data.Paginators.Events;
 using xyLOGIX.Data.Paginators.Models;
 
 namespace xyLOGIX.Data.Paginators.Interfaces
@@ -8,7 +7,6 @@ namespace xyLOGIX.Data.Paginators.Interfaces
     /// Defines the public-exposed methods and properties of an object that
     /// manages the pagination of scraped data.
     /// </summary>
-    [Synchronized]
     public interface IScrapedDataPaginator
     {
         /// <summary> Gets or sets an integer describing the current page. </summary>

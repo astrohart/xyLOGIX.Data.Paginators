@@ -1,4 +1,5 @@
-﻿using PostSharp.Patterns.Threading;
+﻿using PostSharp.Patterns.Model;
+using PostSharp.Patterns.Threading;
 using System;
 using xyLOGIX.Data.Paginators.Events;
 using xyLOGIX.Data.Paginators.Interfaces;
@@ -11,7 +12,7 @@ namespace xyLOGIX.Data.Paginators
     /// data source.
     /// </summary>
     [Synchronized]
-    public sealed class UrlBasedPaginator : PaginatorBase, IUrlPaginator
+    public class UrlBasedPaginator : PaginatorBase, IUrlPaginator
     {
         /// <summary>
         /// Constructs a new instance of
@@ -100,6 +101,7 @@ namespace xyLOGIX.Data.Paginators
         /// <see cref="T:xyLOGIX.Data.Paginators.Pagination" /> object.
         /// </summary>
         /// <remarks> This is the object that contains the page size, etc. </remarks>
+        [Reference]
         public override Pagination Pagination { get; protected set; }
 
         /// <summary>
@@ -117,12 +119,6 @@ namespace xyLOGIX.Data.Paginators
             => TotalEntries > 0 && PageSize > 0
                 ? (TotalEntries + PageSize + 1) / PageSize
                 : 1;
-
-        /// <summary> Gets an expression that tells us how to format the URL for each page. </summary>
-        private Func<int, string> UrlExpression { get; set; }
-
-        /// <summary> Occurs when the current page has been set to a new value. </summary>
-        public override event PageChangedEventHandler PageChanged;
 
         /// <summary>
         /// Initializes the lambda expression that specifies how to format URL
@@ -240,31 +236,5 @@ namespace xyLOGIX.Data.Paginators
         /// <summary> Specifies common initialization code for all constructors. </summary>
         protected override void CommonConstruct()
             => UrlExpression = null;
-
-        /// <summary>
-        /// Raises the
-        /// <see cref="E:xyLOGIX.Data.Paginators.UrlBasedPaginator.UrlExpression" /> event.
-        /// </summary>
-        /// <param name="pageNumber"> Page number of the current page. </param>
-        /// <returns>
-        /// String containing the URL of the page having the specified
-        /// <paramref name="pageNumber" />.
-        /// </returns>
-        [Yielder]
-        protected override string OnFormatPageURL(int pageNumber)
-            => UrlExpression?.Invoke(pageNumber) ?? null;
-
-        /// <summary>
-        /// Raises the
-        /// <see cref="E:xyLOGIX.Data.Paginators.IPaginator.PageChanged" /> event.
-        /// </summary>
-        /// <param name="e">
-        /// A
-        /// <see cref="T:xyLOGIX.Data.Paginators.Events.PageChangedEventArgs" /> that
-        /// contains the event data.
-        /// </param>
-        [Yielder]
-        protected override void OnPageChanged(PageChangedEventArgs e)
-            => PageChanged?.Invoke(this, e);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PostSharp.Patterns.Threading;
+using System;
 using xyLOGIX.Data.Paginators.Events;
 using xyLOGIX.Data.Paginators.Interfaces;
 using xyLOGIX.Data.Paginators.Models;
@@ -48,8 +49,11 @@ namespace xyLOGIX.Data.Paginators
         /// <summary> Gets an integer describing the total number of pages. </summary>
         public abstract int TotalPages { get; }
 
+        /// <summary> Gets an expression that tells us how to format the URL for each page. </summary>
+        protected Func<int, string> UrlExpression { get; set; }
+
         /// <summary> Occurs when the current page has been set to a new value. </summary>
-        public abstract event PageChangedEventHandler PageChanged;
+        public event PageChangedEventHandler PageChanged;
 
         /// <summary> Navigates to the first page in a thread-safe manner. </summary>
         /// <returns> String containing the URL of the new page. </returns>
@@ -144,17 +148,21 @@ namespace xyLOGIX.Data.Paginators
         public abstract string Prev();
 
         /// <summary> Specifies common initialization code for all constructors. </summary>
+        [EntryPoint]
         protected abstract void CommonConstruct();
 
         /// <summary>
-        /// Invokes the expression, if any, attached to the
-        /// <see
-        ///     cref="F:CoinMarketCap.Data.Scraper.Interfaces.CoinMarketCapPagination._urlExpression" />
-        /// delegate.
+        /// Raises the
+        /// <see cref="E:xyLOGIX.Data.Paginators.UrlBasedPaginator.UrlExpression" /> event.
         /// </summary>
         /// <param name="pageNumber"> Page number of the current page. </param>
-        /// <returns>String containing the </returns>
-        protected abstract string OnFormatPageURL(int pageNumber);
+        /// <returns>
+        /// String containing the URL of the page having the specified
+        /// <paramref name="pageNumber" />.
+        /// </returns>
+        [Yielder]
+        protected virtual string OnFormatPageURL(int pageNumber)
+            => UrlExpression?.Invoke(pageNumber) ?? null;
 
         /// <summary>
         /// Raises the
@@ -165,6 +173,8 @@ namespace xyLOGIX.Data.Paginators
         /// <see cref="T:xyLOGIX.Data.Paginators.Events.PageChangedEventArgs" /> that
         /// contains the event data.
         /// </param>
-        protected abstract void OnPageChanged(PageChangedEventArgs e);
+        [Yielder]
+        protected virtual void OnPageChanged(PageChangedEventArgs e)
+            => PageChanged?.Invoke(this, e);
     }
 }

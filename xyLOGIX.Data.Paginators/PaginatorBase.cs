@@ -1,4 +1,5 @@
-﻿using PostSharp.Patterns.Threading;
+using PostSharp.Patterns.Model;
+using PostSharp.Patterns.Threading;
 using System;
 using xyLOGIX.Data.Paginators.Events;
 using xyLOGIX.Data.Paginators.Interfaces;
@@ -53,6 +54,7 @@ namespace xyLOGIX.Data.Paginators
         protected Func<int, string> UrlExpression { get; set; }
 
         /// <summary> Occurs when the current page has been set to a new value. </summary>
+        [WeakEvent]
         public event PageChangedEventHandler PageChanged;
 
         /// <summary> Navigates to the first page in a thread-safe manner. </summary>

@@ -13,7 +13,7 @@ namespace xyLOGIX.Data.Paginators.Tests
     /// Provides unit tests for the
     /// <see cref="T:xyLOGIX.Data.Paginators.Paginator" /> class.
     /// </summary>
-    [TextFixture, ExplicitlySynchronized]
+    [TestFixture, ExplicitlySynchronized]
     public class UrlBasedPaginatorTests
     {
         /// <summary> Sets up the initial conditions for all the unit tests. </summary>

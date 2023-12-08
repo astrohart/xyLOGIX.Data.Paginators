@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using PostSharp.Patterns.Threading;
 using System;
 using xyLOGIX.Data.Paginators.Constants;
@@ -13,7 +13,7 @@ namespace xyLOGIX.Data.Paginators.Tests
     /// Provides unit tests for the
     /// <see cref="T:xyLOGIX.Data.Paginators.Paginator" /> class.
     /// </summary>
-    [TestFixture]
+    [TextFixture, ExplicitlySynchronized]
     public class UrlBasedPaginatorTests
     {
         /// <summary> Sets up the initial conditions for all the unit tests. </summary>

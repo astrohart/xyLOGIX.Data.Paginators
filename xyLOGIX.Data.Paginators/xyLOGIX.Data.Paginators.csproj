@@ -125,6 +125,10 @@
     <Content Include="1382_cogs.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\xyLOGIX.Core.Debug.VS2019\xyLOGIX.Core.Debug\xyLOGIX.Core.Debug.csproj">
+      <Project>{C445C052-26B6-4884-9A7B-25DC7ABC0DED}</Project>
+      <Name>xyLOGIX.Core.Debug</Name>
+    </ProjectReference>
     <ProjectReference Include="..\xyLOGIX.Data.Paginators.Events\xyLOGIX.Data.Paginators.Events.csproj">
       <Project>{1571453c-bb35-4b06-a66c-eaf328dfb325}</Project>
       <Name>xyLOGIX.Data.Paginators.Events</Name>

@@ -35,9 +35,7 @@ namespace xyLOGIX.Data.Paginators
         /// the pagination data, such as current page, page size, total entries, etc.
         /// </param>
         public UrlBasedPaginator(Pagination pagination)
-        {
-            Pagination = pagination;
-        }
+            => Pagination = pagination;
 
         /// <summary> Gets or sets an integer describing the current page. </summary>
         /// <remarks>
@@ -69,7 +67,8 @@ namespace xyLOGIX.Data.Paginators
         /// <summary> Gets a string containing the URL of the current page. </summary>
         /// <remarks>
         /// This property's <c>getter</c> merely raises the
-        /// <see cref="E:xyLOGIX.Data.Paginators.PaginatorBase.UrlExpressionRequested" /> event to
+        /// <see cref="E:xyLOGIX.Data.Paginators.PaginatorBase.UrlExpressionRequested" />
+        /// event to
         /// request the client of this object to tell it what expression is to be used for
         /// requesting a new page of results.
         /// <para />
@@ -157,34 +156,88 @@ namespace xyLOGIX.Data.Paginators
         {
             var result = string.Empty;
 
-            if (page <= 0 ||
-                TotalPages <=
-                1) // trying to move before the first or only page, stop at first page.
+            try
             {
-                CurrentPage = 1;
-                OnPageChanged(new PageChangedEventArgs(1, TotalPages));
-                result = PageUrl;
-            }
-            else if
-                (page >
-                 TotalPages) // trying to move past the end; stop at last page.
-            {
-                CurrentPage = TotalPages;
-                OnPageChanged(new PageChangedEventArgs(TotalPages, TotalPages));
-                result = PageUrl;
-            }
-            else if (CurrentPage == page) // we're already at the desired page.
-            {
-                OnPageChanged(new PageChangedEventArgs(page, TotalPages));
-                result = PageUrl;
-            }
-            else
-            {
-                CurrentPage = page; // set CurrentPage to desired value
-                OnPageChanged(
-                    new PageChangedEventArgs(CurrentPage, TotalPages)
+                // Dump the value of the property, TotalPages, to the log
+                DebugUtils.WriteLine(
+                    DebugLevel.Debug,
+                    $"UrlBasedPaginator.GoToPage: TotalPages = {TotalPages}"
                 );
-                result = PageUrl; // return resultant page URL
+
+                DebugUtils.WriteLine(
+                    DebugLevel.Info,
+                    "UrlBasedPaginator.GoToPage: Checking whether the TotalPages property is set to a nonnegative quantity..."
+                );
+
+                if (TotalPages < 0)
+                {
+                    /*
+                     * Unacceptable - TotalPages can't be a negative number, so stop and
+                     * return the empty string.
+                     */
+
+                    DebugUtils.WriteLine(
+                        DebugLevel.Error,
+                        "*** ERROR *** The TotalPages property is set to a negative quantity."
+                    );
+
+                    DebugUtils.WriteLine(
+                        DebugLevel.Error,
+                        "*** ERROR *** This property must be zero or greater.  Stopping."
+                    );
+
+                    DebugUtils.WriteLine(
+                        DebugLevel.Debug,
+                        $"UrlBasedPaginator.GoToPage: Result = '{result}'"
+                    );
+
+                    return result;
+                }
+
+                DebugUtils.WriteLine(
+                    DebugLevel.Info,
+                    "*** SUCCESS *** The TotalPages property is set to a nonnegative quantity.  Continuing..."
+                );
+
+                if (page <= 0 ||
+                    TotalPages <=
+                    1) // trying to move before the first or only page, stop at first page.
+                {
+                    CurrentPage = 1;
+                    OnPageChanged(new PageChangedEventArgs(1, TotalPages));
+                    result = PageUrl;
+                }
+                else if
+                    (page >
+                     TotalPages) // trying to move past the end; stop at last page.
+                {
+                    CurrentPage = TotalPages;
+                    OnPageChanged(
+                        new PageChangedEventArgs(TotalPages, TotalPages)
+                    );
+                    result = PageUrl;
+                }
+                else if
+                    (CurrentPage == page) // we're already at the desired page.
+                {
+                    OnPageChanged(new PageChangedEventArgs(page, TotalPages));
+                    result = PageUrl;
+                }
+                else
+                {
+                    CurrentPage = page; // set CurrentPage to desired value
+                    OnPageChanged(
+                        new PageChangedEventArgs(CurrentPage, TotalPages)
+                    );
+                    result = PageUrl; // return resultant page URL
+                }
+            }
+            catch (Exception ex)
+            {
+                // dump all the exception info to the log
+                DebugUtils.LogException(ex);
+
+                result = string.Empty;
             }
 
             return result;

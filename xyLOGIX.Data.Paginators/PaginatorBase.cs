@@ -1,5 +1,6 @@
 using PostSharp.Patterns.Threading;
 using System;
+using xyLOGIX.Core.Debug;
 using xyLOGIX.Data.Paginators.Events;
 using xyLOGIX.Data.Paginators.Interfaces;
 using xyLOGIX.Data.Paginators.Models;
@@ -31,6 +32,20 @@ namespace xyLOGIX.Data.Paginators
         public abstract int PageSize { get; set; }
 
         /// <summary> Gets a string containing the URL of the current page. </summary>
+        /// <remarks>
+        /// This property's <c>getter</c> merely raises the
+        /// <see
+        ///     cref="E:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator.UrlExpressionRequested" />
+        /// event to request the client of this object to tell it what expression is to be
+        /// used for requesting a new page of results.
+        /// <para />
+        /// The value of the
+        /// <see cref="P:xyLOGIX.Data.Paginators.UrlBasedPaginator.CurrentPage" /> property
+        /// is submitted to the event handler, or the <see cref="F:System.String.Empty" />
+        /// value is returned if an invalid page number is set as the value of the
+        /// <see cref="P:xyLOGIX.Data.Paginators.UrlBasedPaginator.CurrentPage" />
+        /// property, such as a negative quantity (page numbers can only be nonnegative).
+        /// </remarks>
         public abstract string PageUrl { get; }
 
         /// <summary>
@@ -49,11 +64,11 @@ namespace xyLOGIX.Data.Paginators
         /// <summary> Gets an integer describing the total number of pages. </summary>
         public abstract int TotalPages { get; }
 
-        /// <summary> Gets an expression that tells us how to format the URL for each page. </summary>
-        protected Func<int, string> UrlExpression { get; set; }
-
         /// <summary> Occurs when the current page has been set to a new value. </summary>
         public event PageChangedEventHandler PageChanged;
+
+        /// <summary> Gets an expression that tells us how to format the URL for each page. </summary>
+        public event UrlExpressionRequestedEventHandler UrlExpressionRequested;
 
         /// <summary> Navigates to the first page in a thread-safe manner. </summary>
         /// <returns> String containing the URL of the new page. </returns>
@@ -147,22 +162,48 @@ namespace xyLOGIX.Data.Paginators
         /// </remarks>
         public abstract string Prev();
 
-        /// <summary> Specifies common initialization code for all constructors. </summary>
-        [EntryPoint]
-        protected abstract void CommonConstruct();
-
         /// <summary>
         /// Raises the
-        /// <see cref="E:xyLOGIX.Data.Paginators.UrlBasedPaginator.UrlExpression" /> event.
+        /// <see cref="E:xyLOGIX.Data.Paginators.UrlBasedPaginator.UrlExpressionRequested" />
+        /// event
+        /// to request the formatted page request URL from the client of this object.
         /// </summary>
-        /// <param name="pageNumber"> Page number of the current page. </param>
+        /// <param name="e">
+        /// (Required.) A
+        /// <see cref="T:xyLOGIX.Data.Paginators.Events.UrlExpressionRequestedEventArgs" />
+        /// that
+        /// contains the event data.
+        /// </param>
         /// <returns>
-        /// String containing the URL of the page having the specified
-        /// <paramref name="pageNumber" />.
+        /// String containing the URL of the page having the value of the
+        /// <see
+        ///     cref="P:xyLOGIX.Data.Paginators.Events.UrlExpressionRequestedEventArgs.CurrentPage" />
+        /// property as its page number, or the <see cref="F:System.String.Empty" /> value
+        /// if an error occurred, such as invalid current page number passed.
         /// </returns>
         [Yielder]
-        protected virtual string OnFormatPageURL(int pageNumber)
-            => UrlExpression?.Invoke(pageNumber) ?? null;
+        protected virtual string OnFormatPageURL(
+            UrlExpressionRequestedEventArgs e
+        )
+        {
+            var result = string.Empty;
+
+            try
+            {
+                if (UrlExpressionRequested == null) return result;
+
+                result = UrlExpressionRequested(this, e);
+            }
+            catch (Exception ex)
+            {
+                // dump all the exception info to the log
+                DebugUtils.LogException(ex);
+
+                result = string.Empty;
+            }
+
+            return result;
+        }
 
         /// <summary>
         /// Raises the

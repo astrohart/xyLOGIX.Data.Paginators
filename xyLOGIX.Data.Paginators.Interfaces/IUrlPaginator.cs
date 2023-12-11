@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace xyLOGIX.Data.Paginators.Interfaces
+﻿namespace xyLOGIX.Data.Paginators.Interfaces
 {
     /// <summary>
     /// Defines the public-exposed methods and properties of a url-based
@@ -12,24 +10,6 @@ namespace xyLOGIX.Data.Paginators.Interfaces
     /// </remarks>
     public interface IUrlPaginator : IScrapedDataPaginator
     {
-        /// <summary>
-        /// Initializes the lambda expression that specifies how to format URL
-        /// routes for the various pages.
-        /// </summary>
-        /// <param name="expression">
-        /// A <see cref="T:System.Func" /> delegate, that takes
-        /// an integer parameter and returns a string, that specifies how to format URLs
-        /// for each page.
-        /// </param>
-        /// <returns>
-        /// Reference to the same instance of the object that called this method,
-        /// for fluent use.
-        /// </returns>
-        /// <exception cref="T:System.ArgumentNullExpression">
-        /// Thrown if the
-        /// <paramref name="expression" /> parameter is passed a <see langword="null" />
-        /// value.
-        /// </exception>
-        dynamic AndUrlFormat(Func<int, string> expression);
+        // TODO: Add event, method, and property definitions here.
     }
 }

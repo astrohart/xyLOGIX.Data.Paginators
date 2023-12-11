@@ -1,5 +1,4 @@
-﻿using PostSharp.Patterns.Model;
-using PostSharp.Patterns.Threading;
+﻿using PostSharp.Patterns.Threading;
 using xyLOGIX.Data.Paginators.Events;
 using xyLOGIX.Data.Paginators.Models;
 
@@ -38,6 +37,23 @@ namespace xyLOGIX.Data.Paginators.Interfaces
         int PageSize { get; set; }
 
         /// <summary> Gets a string containing the URL of the current page. </summary>
+        /// <remarks>
+        /// This property's <c>getter</c> merely raises the
+        /// <see cref="E:xyLOGIX.Data.Paginators.PaginatorBase.UrlExpressionRequested" />
+        /// event to
+        /// request the client of this object to tell it what expression is to be used for
+        /// requesting a new page of results.
+        /// <para />
+        /// The value of the
+        /// <see
+        ///     cref="P:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator.CurrentPage" />
+        /// property
+        /// is submitted to the event handler, or the <see cref="F:System.String.Empty" />
+        /// value is returned if an invalid page number is set as the value of the
+        /// <see
+        ///     cref="P:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator.CurrentPage" />
+        /// property, such as a negative quantity (page numbers can only be nonnegative).
+        /// </remarks>
         string PageUrl { get; }
 
         /// <summary>
@@ -58,6 +74,9 @@ namespace xyLOGIX.Data.Paginators.Interfaces
 
         /// <summary> Occurs when the current page has been set to a new value. </summary>
         event PageChangedEventHandler PageChanged;
+
+        /// <summary> Gets an expression that tells us how to format the URL for each page. </summary>
+        event UrlExpressionRequestedEventHandler UrlExpressionRequested;
 
         /// <summary> Navigates to the first page in a thread-safe manner. </summary>
         /// <returns> String containing the URL of the new page. </returns>

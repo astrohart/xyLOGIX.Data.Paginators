@@ -1,4 +1,5 @@
-﻿using PostSharp.Patterns.Diagnostics;
+using PostSharp.Patterns.Threading;
+using PostSharp.Patterns.Diagnostics;
 using System;
 
 namespace xyLOGIX.Data.Paginators.Events
@@ -7,6 +8,7 @@ namespace xyLOGIX.Data.Paginators.Events
     /// Defines the data that is passed by all events of type
     /// <see cref="T:xyLOGIX.Data.Paginators.Events.PageChangedEventHandler" /> .
     /// </summary>
+[ExplicitlySynchronized]
     public class PageChangedEventArgs : EventArgs
     {
         /// <summary>

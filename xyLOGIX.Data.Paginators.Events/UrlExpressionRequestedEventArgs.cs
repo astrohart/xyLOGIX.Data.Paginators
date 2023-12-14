@@ -11,7 +11,8 @@ namespace xyLOGIX.Data.Paginators.Events
     {
         /// <summary>
         /// Constructs a new instance of
-        /// <see cref="T:xyLOGIX.Data.Paginators.Events.UrlExpressionRequestedEventArgs" /> and
+        /// <see cref="T:xyLOGIX.Data.Paginators.Events.UrlExpressionRequestedEventArgs" />
+        /// and
         /// returns a reference to it.
         /// </summary>
         /// <param name="currentPage">

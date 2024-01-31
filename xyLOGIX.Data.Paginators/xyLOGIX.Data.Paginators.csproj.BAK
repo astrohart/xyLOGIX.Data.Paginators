@@ -6,7 +6,7 @@
     <ApplicationIcon>1382_cogs.ico</ApplicationIcon>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <ProjectGuid>{AB364A46-0D89-452A-9A79-20208D0BC1C2}</ProjectGuid>
+    <ProjectGuid>{919790E2-EC4C-4B37-B375-B8FA02C89991}</ProjectGuid>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -21,7 +21,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
     <SkipPostSharp>False</SkipPostSharp>
-    <DocumentationFile>bin\x64\Debug\xyLOGIX.Data.Paginators.Tests.Common.xml</DocumentationFile>
+    <DocumentationFile>bin\x64\Debug\xyLOGIX.Data.Paginators.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -34,7 +34,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
     <SkipPostSharp>True</SkipPostSharp>
-    <DocumentationFile>bin\x64\Release\xyLOGIX.Data.Paginators.Tests.Common.xml</DocumentationFile>
+    <DocumentationFile>bin\x64\Release\xyLOGIX.Data.Paginators.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -47,7 +47,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
     <SkipPostSharp>False</SkipPostSharp>
-    <DocumentationFile>bin\x86\Debug\xyLOGIX.Data.Paginators.Tests.Common.xml</DocumentationFile>
+    <DocumentationFile>bin\x86\Debug\xyLOGIX.Data.Paginators.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -60,7 +60,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
     <SkipPostSharp>True</SkipPostSharp>
-    <DocumentationFile>bin\x86\Release\xyLOGIX.Data.Paginators.Tests.Common.xml</DocumentationFile>
+    <DocumentationFile>bin\x86\Release\xyLOGIX.Data.Paginators.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -69,16 +69,10 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyName>xyLOGIX.Data.Paginators.Tests.Common</AssemblyName>
+    <AssemblyName>xyLOGIX.Data.Paginators</AssemblyName>
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>xyLOGIX.Data.Paginators.Tests.Common</RootNamespace>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <RootNamespace>xyLOGIX.Data.Paginators</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
@@ -111,8 +105,9 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="key.snk" />
     <Compile Include="GlobalAspects.cs" />
+    <Compile Include="UrlBasedPaginator.cs" />
+    <Compile Include="PaginatorBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -128,6 +123,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1382_cogs.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\xyLOGIX.Core.Debug.VS2019\xyLOGIX.Core.Debug\xyLOGIX.Core.Debug.csproj">
+      <Project>{C445C052-26B6-4884-9A7B-25DC7ABC0DED}</Project>
+      <Name>xyLOGIX.Core.Debug</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Data.Paginators.Events\xyLOGIX.Data.Paginators.Events.csproj">
+      <Project>{1571453c-bb35-4b06-a66c-eaf328dfb325}</Project>
+      <Name>xyLOGIX.Data.Paginators.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Data.Paginators.Interfaces\xyLOGIX.Data.Paginators.Interfaces.csproj">
+      <Project>{d74ec18f-0a99-425e-94cf-9e38976cb7f7}</Project>
+      <Name>xyLOGIX.Data.Paginators.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Data.Paginators.Models\xyLOGIX.Data.Paginators.Models.csproj">
+      <Project>{F2B953C1-0977-4802-AE2E-C500EB530793}</Project>
+      <Name>xyLOGIX.Data.Paginators.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

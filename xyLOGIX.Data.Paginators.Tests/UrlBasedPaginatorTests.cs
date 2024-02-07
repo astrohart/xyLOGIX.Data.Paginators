@@ -42,11 +42,11 @@ namespace xyLOGIX.Data.Paginators.Tests
                                        )
                                    ) as IUrlPaginator
             );
-            Assert.IsNotNull(_paginator);
+            ClassicAssert.IsNotNull(_paginator);
 
             _paginator.PageChanged += OnPaginatorPageChanged;
 
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 41, _paginator.TotalPages
             ); // prior to initialization of paginator, TotalPages shall default to 1
         }
@@ -90,7 +90,7 @@ namespace xyLOGIX.Data.Paginators.Tests
         public void Test_CallingNext_FromPenultimatePage_MovesToLast()
         {
             _paginator.GoToPage(_paginator.TotalPages - 1);
-            Assert.AreEqual(_paginator.Next(), _paginator.Last());
+            ClassicAssert.AreEqual(_paginator.Next(), _paginator.Last());
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace xyLOGIX.Data.Paginators.Tests
         public void Test_CallingNext_OnLastPage_StaysThere()
         {
             _paginator.Last();
-            Assert.AreEqual(_paginator.Next(), _paginator.Last());
+            ClassicAssert.AreEqual(_paginator.Next(), _paginator.Last());
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace xyLOGIX.Data.Paginators.Tests
         public void Test_CallingPrev_OnFirstPage_StaysThere()
         {
             _paginator.First();
-            Assert.AreEqual(_paginator.Prev(), _paginator.First());
+            ClassicAssert.AreEqual(_paginator.Prev(), _paginator.First());
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace xyLOGIX.Data.Paginators.Tests
         public void Test_CallingPrev_OnSecondPage_MovesToFirst()
         {
             _paginator.GoToPage(2);
-            Assert.AreEqual(_paginator.Prev(), _paginator.First());
+            ClassicAssert.AreEqual(_paginator.Prev(), _paginator.First());
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace xyLOGIX.Data.Paginators.Tests
         [Test]
         public void Test_FirstMethod_SendsMeToFirstPage()
         {
-            Assert.AreEqual(VALID_COINMARKETCAP_PAGE_1_URL, _paginator.First());
+            ClassicAssert.AreEqual(VALID_COINMARKETCAP_PAGE_1_URL, _paginator.First());
             Reset();
         }
 
@@ -150,7 +150,7 @@ namespace xyLOGIX.Data.Paginators.Tests
         [Test]
         public void Test_GoingBeforeBeginningOfPageRange_SendsMeToFirstPage()
         {
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 _paginator.GoToPage(int.MinValue), _paginator.First()
             );
             Reset();
@@ -166,7 +166,7 @@ namespace xyLOGIX.Data.Paginators.Tests
         [Test]
         public void Test_GoingPastEndOfPageRange_SendsMeToFinalPage()
         {
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 _paginator.GoToPage(int.MaxValue), _paginator.Last()
             );
             Reset();
@@ -180,7 +180,7 @@ namespace xyLOGIX.Data.Paginators.Tests
         [Test]
         public void Test_LastMethod_SendsMeToFinalPage()
         {
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 VALID_COINMARKETCAP_FINAL_PAGE_URL, _paginator.Last()
             );
             Reset();
@@ -196,7 +196,7 @@ namespace xyLOGIX.Data.Paginators.Tests
         public void Test_NextMethod_SendsMeToPage11_FromPage10()
         {
             _paginator.GoToPage(10); // first, go to page 10...
-            Assert.AreEqual(VALID_COINMARKETCAP_PAGE_11_URL, _paginator.Next());
+            ClassicAssert.AreEqual(VALID_COINMARKETCAP_PAGE_11_URL, _paginator.Next());
             Reset();
         }
 
@@ -209,7 +209,7 @@ namespace xyLOGIX.Data.Paginators.Tests
         public void Test_Page10_URL_HasCorrectFormat()
         {
             _paginator.GoToPage(10);
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 VALID_COINMARKETCAP_PAGE_10_URL, _paginator.PageUrl
             );
             Reset();
@@ -225,7 +225,7 @@ namespace xyLOGIX.Data.Paginators.Tests
         public void Test_PrevMethod_SendsMeToPage9_FromPage10()
         {
             _paginator.GoToPage(10); // first, go to page 10...
-            Assert.AreEqual(VALID_COINMARKETCAP_PAGE_9_URL, _paginator.Prev());
+            ClassicAssert.AreEqual(VALID_COINMARKETCAP_PAGE_9_URL, _paginator.Prev());
             Reset();
         }
 
@@ -249,8 +249,8 @@ namespace xyLOGIX.Data.Paginators.Tests
             PageChangedEventArgs e
         )
         {
-            Assert.IsTrue(e.TotalPages > 0 && e.TotalPages < int.MaxValue);
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(e.TotalPages > 0 && e.TotalPages < int.MaxValue);
+            ClassicAssert.IsTrue(
                 e.CurrentPage > 0 && e.CurrentPage <= e.TotalPages &&
                 e.CurrentPage < int.MaxValue
             );

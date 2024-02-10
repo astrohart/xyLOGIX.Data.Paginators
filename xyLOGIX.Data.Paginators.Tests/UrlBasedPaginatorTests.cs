@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using PostSharp.Patterns.Threading;
 using System;
 using xyLOGIX.Data.Paginators.Constants;

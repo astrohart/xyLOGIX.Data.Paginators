@@ -10,7 +10,7 @@ namespace xyLOGIX.Data.Paginators
 {
     /// <summary>
     /// Object that provides services for accessing paginated data from a
-    /// data source.
+    /// data quote.
     /// </summary>
     [Synchronized]
     public class UrlBasedPaginator : PaginatorBase, IUrlPaginator

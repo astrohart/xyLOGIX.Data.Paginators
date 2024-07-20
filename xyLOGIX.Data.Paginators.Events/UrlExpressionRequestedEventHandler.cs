@@ -1,4 +1,4 @@
-﻿namespace xyLOGIX.Data.Paginators.Events
+namespace xyLOGIX.Data.Paginators.Events
 {
     /// <summary>
     /// Method signature for the handler of a <c>UrlExpressionRequested</c> event.

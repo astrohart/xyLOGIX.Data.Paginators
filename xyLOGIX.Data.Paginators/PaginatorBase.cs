@@ -26,10 +26,10 @@ namespace xyLOGIX.Data.Paginators
         public abstract int CurrentPage { get; protected set; }
 
         /// <summary> Gets a value indicating whether the paginator is initialized. </summary>
-        public abstract bool IsInitialized { get; }
+        public abstract bool IsInitialized { [DebuggerStepThrough] get; }
 
         /// <summary> Gets an integer describing the total number of entries on a page. </summary>
-        public abstract int PageSize { get; set; }
+        public abstract int PageSize { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
 
         /// <summary> Gets a string containing the URL of the current page. </summary>
         /// <remarks>
@@ -46,7 +46,7 @@ namespace xyLOGIX.Data.Paginators
         /// <see cref="P:xyLOGIX.Data.Paginators.UrlBasedPaginator.CurrentPage" />
         /// property, such as a negative quantity (page numbers can only be nonnegative).
         /// </remarks>
-        public abstract string PageUrl { get; }
+        public abstract string PageUrl { [DebuggerStepThrough] get; }
 
         /// <summary>
         /// Gets a reference to a
@@ -59,10 +59,10 @@ namespace xyLOGIX.Data.Paginators
         /// Gets an integer describing the total number of entries in the entire
         /// listing.
         /// </summary>
-        public abstract int TotalEntries { get; set; }
+        public abstract int TotalEntries { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
 
         /// <summary> Gets an integer describing the total number of pages. </summary>
-        public abstract int TotalPages { get; }
+        public abstract int TotalPages { [DebuggerStepThrough] get; }
 
         /// <summary> Occurs when the current page has been set to a new value. </summary>
         public event PageChangedEventHandler PageChanged;

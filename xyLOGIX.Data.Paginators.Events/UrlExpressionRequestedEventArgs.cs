@@ -37,6 +37,6 @@ namespace xyLOGIX.Data.Paginators.Events
         /// <summary>
         /// Gets an integer that is set to the number of the current page.
         /// </summary>
-        public int CurrentPage { get; }
+        public int CurrentPage { [DebuggerStepThrough] get; }
     }
 }

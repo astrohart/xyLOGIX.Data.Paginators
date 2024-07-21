@@ -66,13 +66,13 @@ namespace xyLOGIX.Data.Paginators.Events
         /// been set to.
         /// </summary>
         /// <remarks> This value is always 1 or higher. </remarks>
-        public int CurrentPage { get; }
+        public int CurrentPage { [DebuggerStepThrough] get; }
 
         /// <summary>
         /// Gets a value that describes the total count of pages in the
         /// paginator.
         /// </summary>
         /// <remarks> This value is always 1 or higher. </remarks>
-        public int TotalPages { get; }
+        public int TotalPages { [DebuggerStepThrough] get; }
     }
 }

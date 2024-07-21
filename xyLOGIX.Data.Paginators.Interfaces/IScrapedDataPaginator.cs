@@ -25,16 +25,16 @@ namespace xyLOGIX.Data.Paginators.Interfaces
         /// <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator.Last" />
         /// methods in a robust, fault-tolerant, and thread-safe manner.
         /// </remarks>
-        int CurrentPage { get; }
+        int CurrentPage { [DebuggerStepThrough] get; }
 
         /// <summary>
         /// Gets a value indicating whether the scrapedDataPaginator is
         /// initialized.
         /// </summary>
-        bool IsInitialized { get; }
+        bool IsInitialized { [DebuggerStepThrough] get; }
 
         /// <summary> Gets an integer describing the total number of entries on a page. </summary>
-        int PageSize { get; set; }
+        int PageSize { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
 
         /// <summary> Gets a string containing the URL of the current page. </summary>
         /// <remarks>
@@ -54,23 +54,23 @@ namespace xyLOGIX.Data.Paginators.Interfaces
         ///     cref="P:xyLOGIX.Data.Paginators.Interfaces.IScrapedDataPaginator.CurrentPage" />
         /// property, such as a negative quantity (page numbers can only be nonnegative).
         /// </remarks>
-        string PageUrl { get; }
+        string PageUrl { [DebuggerStepThrough] get; }
 
         /// <summary>
         /// Gets a reference to a
         /// <see cref="T:xyLOGIX.Data.Paginators.Models.Pagination" /> object that defines
         /// the pagination parameters, such as current page, page size, total entries, etc.
         /// </summary>
-        Pagination Pagination { get; }
+        Pagination Pagination { [DebuggerStepThrough] get; }
 
         /// <summary>
         /// Gets an integer describing the total number of entries in the entire
         /// listing.
         /// </summary>
-        int TotalEntries { get; set; }
+        int TotalEntries { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
 
         /// <summary> Gets an integer describing the total number of pages. </summary>
-        int TotalPages { get; }
+        int TotalPages { [DebuggerStepThrough] get; }
 
         /// <summary> Occurs when the current page has been set to a new value. </summary>
         event PageChangedEventHandler PageChanged;

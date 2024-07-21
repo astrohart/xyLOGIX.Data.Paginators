@@ -81,15 +81,15 @@ namespace xyLOGIX.Data.Paginators.Models
         /// <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Last" /> methods in
         /// a robust, fault-tolerant, and thread-safe manner.
         /// </remarks>
-        public int CurrentPage { get; set; }
+        public int CurrentPage { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
 
         /// <summary> Gets an integer describing the total number of entries on a page. </summary>
-        public int PageSize { get; set; }
+        public int PageSize { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
 
         /// <summary>
         /// Gets an integer describing the total number of entries in the entire
         /// listing.
         /// </summary>
-        public int TotalEntries { get; set; }
+        public int TotalEntries { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
     }
 }

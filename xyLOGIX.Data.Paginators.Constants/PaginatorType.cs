@@ -1,4 +1,4 @@
-namespace xyLOGIX.Data.Paginators.Constants
+﻿namespace xyLOGIX.Data.Paginators.Constants
 {
 ///  <summary> Values describing the type of Paginator you want. </summary>
    public enum PaginatorType

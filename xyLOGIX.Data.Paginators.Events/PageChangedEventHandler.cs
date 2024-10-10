@@ -1,4 +1,4 @@
-namespace xyLOGIX.Data.Paginators.Events
+﻿namespace xyLOGIX.Data.Paginators.Events
 {
     /// <summary>
     /// Defines the method signature for the handlers of a <c>PageChanged</c>

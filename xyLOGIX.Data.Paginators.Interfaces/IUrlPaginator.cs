@@ -1,4 +1,4 @@
-namespace xyLOGIX.Data.Paginators.Interfaces
+﻿namespace xyLOGIX.Data.Paginators.Interfaces
 {
     /// <summary>
     /// Defines the public-exposed methods and properties of a url-based

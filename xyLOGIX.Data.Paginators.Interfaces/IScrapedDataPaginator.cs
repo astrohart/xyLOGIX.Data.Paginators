@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using PostSharp.Patterns.Threading;
 using xyLOGIX.Data.Paginators.Events;
 using xyLOGIX.Data.Paginators.Models;

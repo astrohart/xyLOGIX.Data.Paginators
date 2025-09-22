@@ -11,7 +11,7 @@
     /// </param>
     /// <returns></returns>
     public delegate string UrlExpressionRequestedEventHandler(
-        object sender,
-        UrlExpressionRequestedEventArgs e
+        [NotLogged] object sender,
+        [NotLogged] UrlExpressionRequestedEventArgs e
     );
 }

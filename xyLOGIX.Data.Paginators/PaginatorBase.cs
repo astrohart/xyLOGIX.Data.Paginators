@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using PostSharp.Patterns.Diagnostics;
+using System.Diagnostics;
 using PostSharp.Patterns.Threading;
 using System;
 using xyLOGIX.Core.Debug;
@@ -216,7 +217,7 @@ namespace xyLOGIX.Data.Paginators
         /// contains the event data.
         /// </param>
         [Yielder]
-        protected virtual void OnPageChanged(PageChanged[NotLogged] EventArgs e)
+        protected virtual void OnPageChanged([NotLogged] PageChangedEventArgs e)
             => PageChanged?.Invoke(this, e);
     }
 }

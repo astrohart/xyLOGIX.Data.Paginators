@@ -1,4 +1,5 @@
-﻿namespace xyLOGIX.Data.Paginators.Events
+﻿using PostSharp.Patterns.Diagnostics;
+namespace xyLOGIX.Data.Paginators.Events
 {
     /// <summary>
     /// Method signature for the handler of a <c>UrlExpressionRequested</c> event.

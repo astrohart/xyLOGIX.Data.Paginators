@@ -14,7 +14,7 @@
     /// contains the event data.
     /// </param>
     public delegate void PageChangedEventHandler(
-        object sender,
-        PageChangedEventArgs e
+        [NotLogged] object sender,
+        [NotLogged] PageChangedEventArgs e
     );
 }

@@ -111,7 +111,7 @@ namespace xyLOGIX.Data.Paginators
         /// </summary>
         /// <remarks> This is the object that contains the page size, etc. </remarks>
         [Reference]
-        public override Pagination Pagination { get; protected set; }
+        public override Pagination Pagination { [DebuggerStepThrough] get; [DebuggerStepThrough] protected set; }
 
         /// <summary>
         /// Gets an integer describing the total number of entries in the entire

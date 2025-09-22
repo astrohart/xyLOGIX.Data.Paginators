@@ -24,7 +24,7 @@ namespace xyLOGIX.Data.Paginators
         /// <see cref="M:xyLOGIX.Data.Paginators.Interfaces.IPaginator.Last" /> methods in
         /// a robust, fault-tolerant, and thread-safe manner.
         /// </remarks>
-        public abstract int CurrentPage { get; protected set; }
+        public abstract int CurrentPage { [DebuggerStepThrough] get; [DebuggerStepThrough] protected set; }
 
         /// <summary> Gets a value indicating whether the paginator is initialized. </summary>
         public abstract bool IsInitialized { [DebuggerStepThrough] get; }
@@ -54,7 +54,7 @@ namespace xyLOGIX.Data.Paginators
         /// <see cref="T:xyLOGIX.Data.Paginators.Models.Pagination" /> object that defines
         /// the pagination parameters, such as current page, page size, total entries, etc.
         /// </summary>
-        public abstract Pagination Pagination { get; protected set; }
+        public abstract Pagination Pagination { [DebuggerStepThrough] get; [DebuggerStepThrough] protected set; }
 
         /// <summary>
         /// Gets an integer describing the total number of entries in the entire
@@ -184,7 +184,7 @@ namespace xyLOGIX.Data.Paginators
         /// </returns>
         [Yielder]
         protected virtual string OnFormatPageURL(
-            UrlExpressionRequestedEventArgs e
+        [NotLogged] UrlExpressionRequestedEventArgs e
         )
         {
             var result = string.Empty;
@@ -216,7 +216,7 @@ namespace xyLOGIX.Data.Paginators
         /// contains the event data.
         /// </param>
         [Yielder]
-        protected virtual void OnPageChanged(PageChangedEventArgs e)
+        protected virtual void OnPageChanged(PageChanged[NotLogged] EventArgs e)
             => PageChanged?.Invoke(this, e);
     }
 }

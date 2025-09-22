@@ -246,8 +246,8 @@ namespace xyLOGIX.Data.Paginators.Tests
         /// <remarks> This method dumps the new page information to the console. </remarks>
         [EntryPoint]        
         private static void OnPaginatorPageChanged(
-            object sender,
-            PageChangedEventArgs e
+            [NotLogged] object sender,
+            [NotLogged] PageChangedEventArgs e
         )
         {
             ClassicAssert.IsTrue(e.TotalPages > 0 && e.TotalPages < int.MaxValue);

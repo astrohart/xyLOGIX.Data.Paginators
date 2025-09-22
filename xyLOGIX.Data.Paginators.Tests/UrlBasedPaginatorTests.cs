@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using PostSharp.Patterns.Diagnostics;
+using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using PostSharp.Patterns.Threading;
 using System;

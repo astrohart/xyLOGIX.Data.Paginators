@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Core.Debug", "..\xy
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1EE58FF8-4247-4D54-A527-688E21B121AF}"
 	ProjectSection(SolutionItems) = preProject
-		3 Sep 2026 Robust Visual Studio Package Manager Console Automation Script Guidelines Rev H.md = 3 Sep 2026 Robust Visual Studio Package Manager Console Automation Script Guidelines Rev H.md
+		4 Sep 2026 Robust Visual Studio Package Manager Console Automation Script Guidelines Rev J.md = 4 Sep 2026 Robust Visual Studio Package Manager Console Automation Script Guidelines Rev J.md
 		2 Sep 2026 Strip Line Breaks from Comments Configuration Spec Rev B.md = 2 Sep 2026 Strip Line Breaks from Comments Configuration Spec Rev B.md
 		xyLOGIX.Data.Paginators.pssln = xyLOGIX.Data.Paginators.pssln
 	EndProjectSection

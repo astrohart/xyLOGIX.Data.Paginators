@@ -23,8 +23,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1EE58FF8-4247-4D54-A527-688E21B121AF}"
 	ProjectSection(SolutionItems) = preProject
 		16 Sep 2026 Strip Line Breaks from Comments Configuration Spec Rev C.md = 16 Sep 2026 Strip Line Breaks from Comments Configuration Spec Rev C.md
-		17 Sep 2026 Robust Visual Studio Package Manager Console Automation Script Guidelines Rev R.md = 17 Sep 2026 Robust Visual Studio Package Manager Console Automation Script Guidelines Rev R.md
 		17 Sep 2026 xyLOGIX SEM Rev Y.md = 17 Sep 2026 xyLOGIX SEM Rev Y.md
+		18 Sep 2026 Robust Visual Studio Package Manager Console Automation Script Guidelines Rev S.md = 18 Sep 2026 Robust Visual Studio Package Manager Console Automation Script Guidelines Rev S.md
 		xyLOGIX.Data.Paginators.pssln = xyLOGIX.Data.Paginators.pssln
 	EndProjectSection
 EndProject
